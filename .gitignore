@@ -6,3 +6,9 @@
 
 #ESLint
 .eslintcache
+
+# npm
+node_modules/
+
+#ESLint
+.eslintcache
