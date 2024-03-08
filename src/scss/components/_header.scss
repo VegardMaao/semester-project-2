@@ -1,0 +1,63 @@
+@use "../utilities/variables.scss" as fonts;
+
+header {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  background-color: rgba(0, 128, 0, 0.521);
+  border-bottom: 2px solid black;
+  max-width: 100%;
+
+  header > a {
+    width: 100px;
+    display: flex;
+    align-items: center;
+  }
+
+  .header_logo {
+    height: 50px;
+    width: 55px;
+    background-color: blue;
+  }
+
+  .logo_banner {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 120fr 1fr;
+  }
+
+  .site_name {
+    font-family: map-get($map: fonts.$fonts, $key: text-font), sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: auto;
+    padding: 0px 10px;
+  }
+
+  #hamburger_menu {
+    display: none;
+  }
+
+  #hamburger_menu:checked ~ nav {
+    display: block;
+    position: absolute;
+    width: 250px;
+    left: calc(100% - 250px);
+    top: 50px;
+  }
+
+  #menu_icon {
+    font-size: 2rem;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 1.2%;
+    right: 2.5%;
+    padding: 0rem 1rem;
+  }
+
+  #menu_icon:hover {
+    cursor: pointer;
+    position: absolute;
+  }
+}
