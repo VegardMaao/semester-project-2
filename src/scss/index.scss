@@ -1,1 +1,15 @@
 @use "./components/header";
+@use "./utilities/variables" as variables;
+
+body {
+  background-color: map-get($map: variables.$colors, $key: offwhite);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: map-get($map: variables.$fonts, $key: header-font);
+}

@@ -17,3 +17,14 @@ export function createNavigation(container, array) {
     container.innerHTML += `<li><a href="${array[i].link}" target="${array[i].target}">${array[i].title}</a></li>`;
   }
 }
+
+export function showOrHideNavigation(container) {
+  const containerClass = container.classList;
+  if (containerClass.length) {
+    container.style.cssText = "top: -500px;";
+    container.classList.remove("visible");
+  } else {
+    container.style.cssText = "top: 0px;";
+    container.classList.add("visible");
+  }
+}

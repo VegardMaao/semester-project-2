@@ -1,12 +1,11 @@
-@use "../utilities/variables.scss" as fonts;
+@use "../utilities/variables.scss" as variables;
 
 header {
   display: flex;
   flex-direction: row;
   height: 50px;
-  background-color: rgba(0, 128, 0, 0.521);
-  border-bottom: 2px solid black;
-  max-width: 100%;
+  width: 100%;
+  justify-content: center;
 
   header > a {
     width: 100px;
@@ -17,17 +16,17 @@ header {
   .header_logo {
     height: 50px;
     width: 55px;
-    background-color: blue;
   }
 
   .logo_banner {
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr 120fr 1fr;
+    display: flex;
+    width: 85%;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .site_name {
-    font-family: map-get($map: fonts.$fonts, $key: text-font), sans-serif;
+    font-family: map-get($map: variables.$fonts, $key: text-font), sans-serif;
     font-size: 1.5rem;
     font-weight: 500;
     margin: auto;
@@ -38,34 +37,23 @@ header {
     display: none;
   }
 
-  #hamburger_menu:checked ~ nav {
-    display: block;
-    position: absolute;
-    width: 250px;
-    left: calc(100% - 250px);
-    top: 50px;
-  }
-
   #menu_icon {
     font-size: 2rem;
     display: block;
-    position: absolute;
-    z-index: 1;
-    top: 1.2%;
-    right: 2.5%;
     padding: 0rem 1rem;
+    position: relative;
+    z-index: 1;
   }
 
   #menu_icon:hover {
     cursor: pointer;
-    position: absolute;
   }
 
   nav {
     position: absolute;
     width: 100%;
     height: 404px;
-    top: -404px;
+    top: -500px;
     transition: 500ms;
 
     .nav_ul {
@@ -75,10 +63,11 @@ header {
       align-self: flex-end;
       justify-content: space-evenly;
       margin: 0px;
-      background-color: var(--primary-color);
+      background-color: map-get($map: variables.$colors, $key: normalblue);
       width: 100%;
       height: 100%;
-      border-bottom: 2px solid var(--text-color);
+      position: relative;
+      z-index: -1;
       border-top: none;
       padding: 50px 0px 0px 0px;
     }
@@ -93,7 +82,7 @@ header {
     }
 
     .nav_ul > li > a {
-      font-family: map-get($map: fonts.$fonts, $key: text-font);
+      font-family: map-get($map: variables.$fonts, $key: text-font);
       font-size: 1.5rem;
       text-decoration: underline;
       padding: 0px 10px;
