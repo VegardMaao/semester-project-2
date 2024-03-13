@@ -6,7 +6,7 @@ export const navItems = [
   },
   {
     title: "All listings",
-    link: "#",
+    link: "/pages/all-listings.html",
     target: "_self",
   },
   {
