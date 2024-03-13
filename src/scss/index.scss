@@ -1,9 +1,20 @@
 @use "./components/header";
+@use "./components/_footer.scss";
 @use "./utilities/variables" as variables;
 
 body {
   background-color: map-get($map: variables.$colors, $key: offwhite);
 }
+
+/*
+DELETE THIS STYLE AFTER DEVELOPMENT
+*/
+main {
+  min-height: 1650px;
+}
+/*
+DELETE THIS STYLE AFTER DEVELOPMENT
+*/
 
 h1,
 h2,
@@ -12,4 +23,11 @@ h4,
 h5,
 h6 {
   font-family: map-get($map: variables.$fonts, $key: header-font);
+}
+
+p,
+li,
+a,
+span {
+  font-family: map-get($map: variables.$fonts, $key: text-font);
 }

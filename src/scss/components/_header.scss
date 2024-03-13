@@ -6,6 +6,7 @@ header {
   height: 50px;
   width: 100%;
   justify-content: center;
+  margin-top: 5%;
 
   header > a {
     width: 100px;
@@ -23,14 +24,6 @@ header {
     width: 85%;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .site_name {
-    font-family: map-get($map: variables.$fonts, $key: text-font), sans-serif;
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin: auto;
-    padding: 0px 10px;
   }
 
   #hamburger_menu {

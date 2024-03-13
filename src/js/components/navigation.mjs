@@ -18,6 +18,13 @@ export function createNavigation(container, array) {
   }
 }
 
+/**
+ *
+ * @param {object} container
+ *
+ * Accepts a container and sets the css top value based on wheter
+ * or not it has a class called "visible"
+ */
 export function showOrHideNavigation(container) {
   const containerClass = container.classList;
   if (containerClass.length) {
