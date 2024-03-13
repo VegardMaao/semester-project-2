@@ -5,7 +5,6 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: inherit;
   max-width: 100%;
   height: 100%;
 
@@ -17,6 +16,10 @@ footer {
     li {
       list-style-type: none;
       margin: 5px 0px;
+
+      a {
+        text-decoration: none;
+      }
     }
   }
 

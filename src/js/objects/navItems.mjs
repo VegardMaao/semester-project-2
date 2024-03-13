@@ -10,6 +10,11 @@ export const navItems = [
     target: "_self",
   },
   {
+    title: "My listings and bids",
+    link: "#",
+    target: "_self",
+  },
+  {
     title: "About",
     link: "#",
     target: "_self",

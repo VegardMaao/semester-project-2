@@ -17,6 +17,8 @@ header {
   .header_logo {
     height: 50px;
     width: 55px;
+    position: relative;
+    z-index: 1;
   }
 
   .logo_banner {
@@ -36,6 +38,10 @@ header {
     padding: 0rem 1rem;
     position: relative;
     z-index: 1;
+    border: 2px solid;
+    border-radius: 25px;
+    padding: 10px;
+    background-color: map-get($map: variables.$colors, $key: nicegreen);
   }
 
   #menu_icon:hover {
@@ -56,56 +62,29 @@ header {
       align-self: flex-end;
       justify-content: space-evenly;
       margin: 0px;
-      background-color: map-get($map: variables.$colors, $key: normalblue);
+      background-color: map-get($map: variables.$colors, $key: brightblue);
       width: 100%;
       height: 100%;
       position: relative;
-      // z-index: -1;
       border-top: none;
       padding: 50px 0px 0px 0px;
-    }
 
-    .nav_ul > li {
-      list-style: none;
-      margin: 10px 25px;
-    }
+      li {
+        list-style: none;
+        margin: 10px 25px;
 
-    .nav_ul > li:nth-of-type(3) {
-      margin-bottom: 50px;
-    }
-
-    .nav_ul > li > a {
-      font-family: map-get($map: variables.$fonts, $key: text-font);
-      font-size: 1.5rem;
-      text-decoration: underline;
-      padding: 0px 10px;
-    }
-
-    .menubox {
-      color: rgba(255, 0, 0, 0.39);
-
-      #hamburger_menu {
-        display: none;
-      }
-
-      #hamburger_menu:checked ~ nav {
-        top: 0px;
-      }
-
-      #menu_icon {
-        font-size: 2rem;
-        display: block;
-        position: absolute;
-        top: 15%;
-        right: 2.5%;
-        z-index: 1;
-        padding: 0rem 1.5rem;
-      }
-
-      #menu_icon:hover {
-        cursor: pointer;
-        position: absolute;
+        a {
+          font-size: 1.5rem;
+          text-decoration: none;
+          padding: 0px 10px;
+        }
       }
     }
+  }
+}
+
+@media (min-width: 1000px) {
+  header {
+    margin-top: 2%;
   }
 }
