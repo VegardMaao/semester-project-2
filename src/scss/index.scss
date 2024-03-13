@@ -1,9 +1,12 @@
 @use "./components/header";
 @use "./components/_footer.scss";
+@use "./components/images.scss";
+@use "./components/_hero-story.scss";
 @use "./utilities/variables" as variables;
 
 body {
   background-color: map-get($map: variables.$colors, $key: offwhite);
+  margin: 0;
 }
 
 /*

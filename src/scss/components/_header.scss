@@ -1,6 +1,7 @@
 @use "../utilities/variables.scss" as variables;
 
 header {
+  position: fixed;
   display: flex;
   flex-direction: row;
   height: 50px;

@@ -31,7 +31,7 @@ export function showOrHideNavigation(container) {
     container.style.cssText = "top: -500px;";
     container.classList.remove("visible");
   } else {
-    container.style.cssText = "top: 0px;";
+    container.style.cssText = "top: -50px;";
     container.classList.add("visible");
   }
 }
