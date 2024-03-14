@@ -1,5 +1,23 @@
 @use "../utilities/variables" as variables;
 
+#menu_icon {
+  font-size: 2rem;
+  display: block;
+  width: 50px;
+  text-align: center;
+  padding: 0rem 1rem;
+  position: relative;
+  z-index: 1;
+  border: 2px solid;
+  border-radius: 25px;
+  padding: 10px;
+  background-color: map-get($map: variables.$colors, $key: nicegreen);
+}
+
+#menu_icon:hover {
+  cursor: pointer;
+}
+
 .cta-btn {
   border: 2px solid map-get($map: variables.$colors, $key: deepblue);
   text-decoration: none;
@@ -37,4 +55,8 @@
   background-color: map-get($map: variables.$colors, $key: offwhite);
   border-radius: 25px;
   padding: 10px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  align-self: center;
 }

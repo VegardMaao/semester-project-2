@@ -9,3 +9,7 @@ body {
   background-color: map-get($map: variables.$colors, $key: offwhite);
   margin: 0;
 }
+
+section {
+  margin-bottom: 25px;
+}

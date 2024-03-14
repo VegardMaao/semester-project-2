@@ -19,34 +19,20 @@ header {
     height: 50px;
     width: 55px;
     position: relative;
+    justify-self: start;
     z-index: 1;
   }
 
   .logo_banner {
-    display: flex;
     width: 85%;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 5fr 1fr 1fr;
+    grid-auto-flow: row;
+    justify-items: center;
   }
 
   #hamburger_menu {
     display: none;
-  }
-
-  #menu_icon {
-    font-size: 2rem;
-    display: block;
-    padding: 0rem 1rem;
-    position: relative;
-    z-index: 1;
-    border: 2px solid;
-    border-radius: 25px;
-    padding: 10px;
-    background-color: map-get($map: variables.$colors, $key: nicegreen);
-  }
-
-  #menu_icon:hover {
-    cursor: pointer;
   }
 
   nav {
