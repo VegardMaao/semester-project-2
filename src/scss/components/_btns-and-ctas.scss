@@ -1,0 +1,9 @@
+@use "../utilities/variables" as variables;
+
+.cta-btn {
+  border: 2px solid map-get($map: variables.$colors, $key: deepblue);
+  border-radius: 15px;
+  padding: 5px;
+  text-decoration: none;
+  background-color: map-get($map: variables.$colors, $key: jetred);
+}

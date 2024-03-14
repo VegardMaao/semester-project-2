@@ -1,5 +1,24 @@
 @use "../utilities/variables" as variables;
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: map-get($map: variables.$fonts, $key: header-font);
+  text-align: center;
+  color: map-get($map: variables.$colors, $key: deepblue);
+}
+
+p,
+li,
+a,
+span {
+  font-family: map-get($map: variables.$fonts, $key: text-font);
+  color: map-get($map: variables.$colors, $key: deepblue);
+}
+
 .hero-story {
   display: flex;
   width: 100%;
@@ -38,5 +57,15 @@
       padding: 10px;
       background-color: #f1faee7d;
     }
+  }
+}
+
+.intro-to-Noroff-Auction-House {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    text-align: center;
+    max-width: 600px;
   }
 }
