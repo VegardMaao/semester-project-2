@@ -2,8 +2,39 @@
 
 .cta-btn {
   border: 2px solid map-get($map: variables.$colors, $key: deepblue);
-  border-radius: 15px;
-  padding: 5px;
   text-decoration: none;
-  background-color: map-get($map: variables.$colors, $key: jetred);
+  background-color: map-get($map: variables.$colors, $key: offwhite);
+
+  padding: 15px 25px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 15px 10px;
+
+  -webkit-transform: skewX(-10deg);
+  -moz-transform: skewX(-10deg);
+  -ms-transform: skewX(-10deg);
+  transform: skewX(-10deg);
+  filter: drop-shadow(
+    20px 10px 4px map-get($map: variables.$colors, $key: deepblue)
+  );
+  transition: ease-in-out 0.2s;
+}
+
+.cta-btn:hover {
+  filter: drop-shadow(
+    15px 5px 2px map-get($map: variables.$colors, $key: brightblue)
+  );
+  background-color: map-get($map: variables.$colors, $key: deepblue);
+  color: map-get($map: variables.$colors, $key: offwhite);
+  -webkit-transform: skewX(-5deg);
+  -moz-transform: skewX(-5eg);
+  -ms-transform: skewX(-5deg);
+}
+
+.login-btn {
+  border: 2px solid map-get($map: variables.$colors, $key: deepblue);
+  text-decoration: none;
+  background-color: map-get($map: variables.$colors, $key: offwhite);
+  border-radius: 25px;
+  padding: 10px;
 }

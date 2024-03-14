@@ -50,10 +50,6 @@ span {
     a {
       font-size: 1.5rem;
       font-weight: 600;
-      color: map-get($map: variables.$colors, $key: deepblue);
-      text-decoration: none;
-      border: 2px solid map-get($map: variables.$colors, $key: deepblue);
-      border-radius: 25px;
       padding: 10px;
       background-color: #f1faee7d;
     }
