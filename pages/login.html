@@ -39,8 +39,42 @@
       </nav>
     </header>
     <main>
-      <section>
-        <h1>Log in</h1>
+      <section class="login-section">
+        <form action="submit">
+          <fieldset>
+            <div>
+              <h1>Log in</h1>
+              <label for="Inputuser">Email</label>
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                id="Inputuser"
+                aria-describeby="usernameHelp"
+                pattern="[a-zA-Z0-9]+@(stud.noroff.no|noroff.no)+$"
+                placeholder="your@email.com"
+                required
+              />
+              <p class="invalid-feedback">Enter a valid Noroff email address</p>
+            </div>
+            <div>
+              <label for="InputPassword">Password</label>
+              <input
+                type="password"
+                name="password"
+                class="form-control mb-3"
+                id="InputPassword"
+                placeholder="Password"
+                minlength="8"
+                required
+              />
+              <p class="invalid-feedback">
+                Password must be minimum 8 characters
+              </p>
+            </div>
+          </fieldset>
+          <button class="sign-in" type="submit" disabled>Sign in</button>
+        </form>
       </section>
     </main>
     <footer>

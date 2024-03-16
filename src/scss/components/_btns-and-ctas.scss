@@ -38,7 +38,8 @@
   transition: ease-in-out 0.2s;
 }
 
-.cta-btn:hover {
+.cta-btn:hover,
+.sign-in:hover:enabled {
   filter: drop-shadow(
     15px 5px 2px map-get($map: variables.$colors, $key: brightblue)
   );
@@ -59,4 +60,30 @@
   z-index: 1;
   text-align: center;
   align-self: center;
+}
+
+.sign-in {
+  background-color: map-get($map: variables.$colors, $key: offwhite);
+
+  align-self: center;
+  padding: 10px;
+
+  -webkit-transform: skewX(-10deg);
+  -moz-transform: skewX(-10deg);
+  -ms-transform: skewX(-10deg);
+  transform: skewX(-10deg);
+
+  transition: ease-in-out 0.2s;
+}
+
+.sign-in:disabled {
+  filter: drop-shadow(
+    20px 10px 4px map-get($map: variables.$colors, $key: brightblue)
+  );
+}
+
+.sign-in:enabled {
+  filter: drop-shadow(
+    20px 10px 4px map-get($map: variables.$colors, $key: deepblue)
+  );
 }

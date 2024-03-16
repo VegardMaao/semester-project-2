@@ -14,7 +14,8 @@ h6 {
 p,
 li,
 a,
-span {
+span,
+label {
   font-family: map-get($map: variables.$fonts, $key: text-font);
   color: map-get($map: variables.$colors, $key: deepblue);
 }
