@@ -6,7 +6,7 @@ const navUl = document.querySelector(".nav_ul");
 const menuIcon = document.querySelector("#menu_icon");
 headerFunctions.createNavigation(navUl, navigationObjects.navItems);
 menuIcon.addEventListener("click", () => {
-  headerFunctions.showOrHideNavigation(navContainer);
+  headerFunctions.showOrHideNavigation(navContainer, menuIcon);
 });
 
 const footerIconsContainer = document.querySelector(".footer-icons-ul");
@@ -20,3 +20,5 @@ headerFunctions.createNavigation(
   footerTextContainer,
   navigationObjects.footerText,
 );
+
+// const menuBtn = document.querySelector("#")
