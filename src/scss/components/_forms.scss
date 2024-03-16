@@ -2,7 +2,11 @@
 
 .moving-main {
   transition: 500ms ease-in-out;
+  height: 90vh;
+  overflow: auto;
 }
+
+// THE MOVING MAIN NEEDS MORE WORK
 
 .login-section {
   display: flex;

@@ -39,7 +39,8 @@
 }
 
 .cta-btn:hover,
-.sign-in:hover:enabled {
+.sign-in:hover:enabled,
+.sign-up:hover:enabled {
   filter: drop-shadow(
     15px 5px 2px map-get($map: variables.$colors, $key: brightblue)
   );
@@ -62,7 +63,8 @@
   align-self: center;
 }
 
-.sign-in {
+.sign-in,
+.sign-up {
   background-color: map-get($map: variables.$colors, $key: offwhite);
 
   align-self: center;
@@ -76,13 +78,15 @@
   transition: ease-in-out 0.2s;
 }
 
-.sign-in:disabled {
+.sign-in:disabled,
+.sign-up:disabled {
   filter: drop-shadow(
     20px 10px 4px map-get($map: variables.$colors, $key: brightblue)
   );
 }
 
-.sign-in:enabled {
+.sign-in:enabled,
+.sign-up:disabled {
   filter: drop-shadow(
     20px 10px 4px map-get($map: variables.$colors, $key: deepblue)
   );
