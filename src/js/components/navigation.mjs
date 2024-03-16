@@ -21,9 +21,11 @@ export function createNavigation(container, array) {
 /**
  *
  * @param {object} container
+ * @param {object} menuIcon
  *
  * Accepts a container and sets the css top value based on wheter
- * or not it has a class called "visible"
+ * or not it has a class called "visible" + changes menu  icon to cross
+ * or bars depending on state
  */
 export function showOrHideNavigation(container, menuIcon) {
   const containerClass = container.classList;
@@ -39,8 +41,3 @@ export function showOrHideNavigation(container, menuIcon) {
     menuIcon.classList.add("fa-times");
   }
 }
-
-// export function changeMenuIcon(domElement) {
-//   console.dir(domElement);
-//   domElement.classList
-// }
