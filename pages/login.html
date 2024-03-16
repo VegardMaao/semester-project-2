@@ -20,14 +20,14 @@
   <body>
     <header class="sticky">
       <div class="logo_banner">
-        <a class="header_logo" href="index.html">
+        <a class="header_logo" href="../index.html">
           <img
             src="../src/image-resources/Auction-house-logo.PNG"
             alt="Auction House Logo"
             class="header_logo"
         /></a>
 
-        <a href="./pages/login.html" class="login-btn">Log in</a>
+        <span></span>
 
         <label for="hamburger_menu" class="menubox"
           ><i class="fas fa-bars" id="menu_icon"></i
@@ -38,7 +38,7 @@
         <ul class="nav_ul"></ul>
       </nav>
     </header>
-    <main>
+    <main class="moving-main visible">
       <section class="login-section">
         <form action="submit">
           <fieldset>
@@ -58,12 +58,11 @@
               <p class="invalid-feedback">Enter a valid Noroff email address</p>
             </div>
             <div>
-              <label for="InputPassword">Password</label>
+              <label for="login-InputPassword">Password</label>
               <input
                 type="password"
                 name="password"
-                class="form-control mb-3"
-                id="InputPassword"
+                id="login-InputPassword"
                 placeholder="Password"
                 minlength="8"
                 required
@@ -74,6 +73,71 @@
             </div>
           </fieldset>
           <button class="sign-in" type="submit" disabled>Sign in</button>
+        </form>
+        <button class="show-signup-form-button">
+          Don't have an account? Sign up!
+          <i class="fas fa-arrow-down"></i>
+        </button>
+      </section>
+
+      <section class="signup-secton">
+        <button class="show-signup-form-button">
+          Do you have an account? Log in!
+          <i class="fas fa-arrow-up"></i>
+        </button>
+        <form
+          class="form-container d-flex flex-column was-validated"
+          action="submit"
+        >
+          <fieldset>
+            <div>
+              <h2>Sign up for Noroff Social Media</h2>
+              <label for="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                id="name"
+                aria-describeby="usernameHelp"
+                minlength="2"
+                placeholder="Username"
+                required
+              />
+              <div>Enter a username, minimum 2 characters</div>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                id="email"
+                aria-describeby="usernameHelp"
+                pattern="[a-zA-Z0-9]+@(stud.noroff.no|noroff.no)+$"
+                placeholder="your@email.com"
+                required
+              />
+              <div class="invalid-feedback">
+                Enter a valid Noroff email address
+              </div>
+            </div>
+            <div>
+              <label for="signup-InputPassword">Password</label>
+              <input
+                type="password"
+                name="password"
+                class="form-control mb-3"
+                id="signup-InputPassword"
+                placeholder="Password"
+                minlength="8"
+                required
+              />
+              <div class="invalid-feedback">
+                Password must be minimum 8 characters
+              </div>
+            </div>
+          </fieldset>
+          <button type="submit" disabled>Sign up</button>
         </form>
       </section>
     </main>

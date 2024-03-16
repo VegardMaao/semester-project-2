@@ -1,4 +1,8 @@
 import * as headerFunctions from "./components/navigation.mjs";
+
+import * as navigationFunctions from "./visual-effects/navigationEffects.mjs";
+import * as loginEffects from "./visual-effects/loginEffects.mjs";
+
 import * as navigationObjects from "./objects/navItems.mjs";
 
 const navContainer = document.querySelector("nav");
@@ -6,7 +10,7 @@ const navUl = document.querySelector(".nav_ul");
 const menuIcon = document.querySelector("#menu_icon");
 headerFunctions.createNavigation(navUl, navigationObjects.navItems);
 menuIcon.addEventListener("click", () => {
-  headerFunctions.showOrHideNavigation(navContainer, menuIcon);
+  navigationFunctions.showOrHideNavigation(navContainer, menuIcon);
 });
 
 const footerIconsContainer = document.querySelector(".footer-icons-ul");
@@ -21,4 +25,11 @@ headerFunctions.createNavigation(
   navigationObjects.footerText,
 );
 
-// const menuBtn = document.querySelector("#")
+const movingMain = document.querySelector("main");
+const changeFormBtns = document.querySelectorAll(".show-signup-form-button");
+
+changeFormBtns.forEach(function (btn) {
+  btn.addEventListener("click", () => {
+    loginEffects.changeForm(movingMain);
+  });
+});
