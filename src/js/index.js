@@ -25,11 +25,13 @@ headerFunctions.createNavigation(
   navigationObjects.footerText,
 );
 
-const movingMain = document.querySelector("main");
+const movingMain = document.querySelector(".moving-main");
+// const logInSection = document.querySelector(".login-section");
+const signUpSection = document.querySelector(".signup-secton");
 const changeFormBtns = document.querySelectorAll(".show-signup-form-button");
 
 changeFormBtns.forEach(function (btn) {
   btn.addEventListener("click", () => {
-    loginEffects.changeForm(movingMain);
+    loginEffects.changeForm(movingMain, signUpSection);
   });
 });
