@@ -103,7 +103,9 @@
                 placeholder="Username"
                 required
               />
-              <div>Enter a username, minimum 2 characters</div>
+              <p class="invalid-feedback">
+                Enter a username, minimum 2 characters
+              </p>
             </div>
             <div>
               <label for="email">Email</label>
@@ -117,9 +119,7 @@
                 placeholder="your@email.com"
                 required
               />
-              <div class="invalid-feedback">
-                Enter a valid Noroff email address
-              </div>
+              <p class="invalid-feedback">Enter a valid Noroff email address</p>
             </div>
             <div>
               <label for="signup-InputPassword">Password</label>
@@ -132,9 +132,9 @@
                 minlength="8"
                 required
               />
-              <div class="invalid-feedback">
+              <p class="invalid-feedback">
                 Password must be minimum 8 characters
-              </div>
+              </p>
             </div>
           </fieldset>
           <button class="sign-up" type="submit" disabled>Sign up</button>
