@@ -2,6 +2,7 @@ import * as headerFunctions from "./components/navigation.mjs";
 
 import * as navigationFunctions from "./visual-effects/navigationEffects.mjs";
 import * as loginEffects from "./visual-effects/loginEffects.mjs";
+import * as formValidation from "./visual-effects/formValidation.mjs";
 
 import * as navigationObjects from "./objects/navItems.mjs";
 
@@ -25,8 +26,22 @@ headerFunctions.createNavigation(
   navigationObjects.footerText,
 );
 
+const fieldset1 = document.querySelector(".first-form").elements;
+const btn1 = document.querySelector("#sign-in-btn");
+const fieldset2 = document.querySelector(".second-form").elements;
+const btn2 = document.querySelector("#sign-up-btn");
+
+for (let i = 0; i < fieldset1.length; i++) {
+  const input = fieldset1[i];
+  input.onkeyup = () => formValidation.formCheck(fieldset1, btn1);
+}
+
+for (let i = 0; i < fieldset2.length; i++) {
+  const input = fieldset2[i];
+  input.onkeyup = () => formValidation.formCheck(fieldset2, btn2);
+}
+
 const movingMain = document.querySelector(".moving-main");
-// const logInSection = document.querySelector(".login-section");
 const signUpSection = document.querySelector(".signup-secton");
 const changeFormBtns = document.querySelectorAll(".show-signup-form-button");
 

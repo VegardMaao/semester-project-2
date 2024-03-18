@@ -41,7 +41,7 @@
     <main class="moving-main visible">
       <section class="login-section">
         <form action="submit">
-          <fieldset>
+          <fieldset class="form-to-validate first-form">
             <div>
               <h1>Log in</h1>
               <label for="Inputuser">Email</label>
@@ -72,7 +72,9 @@
               </p>
             </div>
           </fieldset>
-          <button class="sign-in" type="submit" disabled>Sign in</button>
+          <button id="sign-in-btn" class="sign-in" type="submit" disabled>
+            Sign in
+          </button>
         </form>
         <button class="show-signup-form-button">
           Don't have an account? Sign up!
@@ -85,11 +87,8 @@
           Do you have an account? Log in!
           <i class="fas fa-arrow-up"></i>
         </button>
-        <form
-          class="form-container d-flex flex-column was-validated"
-          action="submit"
-        >
-          <fieldset>
+        <form action="submit">
+          <fieldset class="form-to-validate second-form">
             <div>
               <h2>Sign up for Noroff Social Media</h2>
               <label for="name">Name</label>
@@ -137,7 +136,9 @@
               </p>
             </div>
           </fieldset>
-          <button class="sign-up" type="submit" disabled>Sign up</button>
+          <button id="sign-up-btn" class="sign-up" type="submit" disabled>
+            Sign up
+          </button>
         </form>
       </section>
     </main>
