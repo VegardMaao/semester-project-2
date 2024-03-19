@@ -1,14 +1,10 @@
 @use "../utilities/variables" as variables;
 
 .moving-main {
-  position: relative;
   transition: 500ms ease-in-out;
   height: 90vh;
   top: 0vh;
-
-  section:last-of-type {
-    display: none;
-  }
+  overflow: auto;
 }
 
 .moving-main::-webkit-scrollbar {

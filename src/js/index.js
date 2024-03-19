@@ -42,11 +42,11 @@ for (let i = 0; i < fieldset2.length; i++) {
 }
 
 const movingMain = document.querySelector(".moving-main");
-const signUpSection = document.querySelector(".signup-secton");
+// const signUpSection = document.querySelector(".signup-secton");
 const changeFormBtns = document.querySelectorAll(".show-signup-form-button");
 
 changeFormBtns.forEach(function (btn) {
   btn.addEventListener("click", () => {
-    loginEffects.changeForm(movingMain, signUpSection);
+    loginEffects.changeForm(movingMain);
   });
 });

@@ -1,15 +1,16 @@
-export function changeForm(container, signUpForm) {
+export function changeForm(container) {
   const containerClass = container.classList;
-
   if (containerClass.contains("visible")) {
-    container.style.cssText = "position: relative; top: -100vh;";
-    signUpForm.style.cssText = "display: flex";
-    container.classList.remove("visible");
+    container.scrollTo({
+      top: container.scrollHeight,
+      behavior: "smooth",
+    });
+    containerClass.remove("visible");
   } else {
-    container.style.cssText = "position: relative; top: 0;";
-    container.classList.add("visible");
-    setTimeout(() => {
-      signUpForm.style.cssText = "display: none";
-    }, 500);
+    container.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    containerClass.add("visible");
   }
 }
