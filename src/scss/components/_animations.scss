@@ -5,6 +5,8 @@
   height: 90vh;
   top: 0vh;
   overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .moving-main::-webkit-scrollbar {

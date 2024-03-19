@@ -66,10 +66,9 @@
 .sign-in,
 .sign-up {
   background-color: map-get($map: variables.$colors, $key: offwhite);
-
   align-self: center;
   padding: 10px;
-
+  margin-top: 10px;
   -webkit-transform: skewX(-10deg);
   -moz-transform: skewX(-10deg);
   -ms-transform: skewX(-10deg);
@@ -90,4 +89,23 @@
   filter: drop-shadow(
     20px 10px 4px map-get($map: variables.$colors, $key: deepblue)
   );
+}
+
+.show-signup-form-button {
+  margin-top: 7vh;
+  border: 2px solid map-get($map: variables.$colors, $key: deepblue);
+  color: map-get($map: variables.$colors, $key: offwhite);
+  text-decoration: none;
+  background-color: map-get($map: variables.$colors, $key: deepblue);
+  border-radius: 15px;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  align-self: center;
+}
+
+.show-signup-form-button:hover {
+  background-color: map-get($map: variables.$colors, $key: offwhite);
+  color: map-get($map: variables.$colors, $key: deepblue);
+  cursor: pointer;
 }
