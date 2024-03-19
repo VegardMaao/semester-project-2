@@ -14,10 +14,19 @@ const trueChecker = (arr) => arr.every(Boolean);
  * but hardcoding the regex in HTML did the same job and keeps the code generic and reusable.
  */
 export function formCheck(inputs, btn) {
-  console.log("hello");
   const trueCheckerArr = [];
   for (let i = 0; i < inputs.length; i++) {
     const inputsValidity = inputs[i].validity.valid;
+    let errorMsg = inputs[i].nextElementSibling;
+
+    if (inputsValidity) {
+      errorMsg.style.cssText = "display: none";
+      inputs[i].classList.add("validated");
+    } else {
+      errorMsg.style.cssText = "display: block";
+      inputs[i].classList.remove("validated");
+    }
+
     trueCheckerArr.push(inputsValidity);
   }
 
