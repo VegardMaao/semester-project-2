@@ -18,11 +18,14 @@
   cursor: pointer;
 }
 
+button {
+  z-index: 0;
+}
+
 .cta-btn {
   border: 2px solid map-get($map: variables.$colors, $key: deepblue);
   text-decoration: none;
   background-color: map-get($map: variables.$colors, $key: offwhite);
-
   padding: 15px 25px;
   font-weight: 600;
   font-size: 1.3rem;
