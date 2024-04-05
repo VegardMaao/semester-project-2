@@ -1,11 +1,13 @@
 import * as headerFunctions from "./components/navigation.mjs";
 import * as navigationFunctions from "./visual-effects/navigationEffects.mjs";
+import * as navigationObjects from "./objects/navItems.mjs";
 import * as loginEffects from "./visual-effects/loginEffects.mjs";
 import * as formValidation from "./visual-effects/formValidation.mjs";
-import * as navigationObjects from "./objects/navItems.mjs";
-
 import * as postActions from "./api-functions/post/postActions.mjs";
 import * as formActions from "./formActions/submitForms.mjs";
+
+const logoBanner = document.querySelector(".logo_banner");
+headerFunctions.makeLogoBanner(logoBanner);
 
 const navContainer = document.querySelector("nav");
 const navUl = document.querySelector(".nav_ul");

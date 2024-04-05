@@ -17,3 +17,36 @@ export function createNavigation(container, array) {
     container.innerHTML += `<li><a href="${array[i].link}" target="${array[i].target}">${array[i].title}</a></li>`;
   }
 }
+
+export function makeLogoBanner(container) {
+  const token = localStorage.getItem("userName");
+  console.log(token);
+  if (!token) {
+    container.innerHTML = `<a class="header_logo" href="../index.html">
+    <img
+      src="../src/image-resources/Auction-house-logo.PNG"
+      alt="Auction House Logo"
+      class="header_logo"
+  /></a>
+
+  <a href="../pages/login.html" class="login-btn"><i class="far fa-user"></i></a>
+
+  <label for="hamburger_menu" class="menubox"
+    ><i class="fas fa-bars" id="menu_icon"></i
+  ></label>
+  <input type="checkbox" name="hamburger_menu" id="hamburger_menu" />`;
+  } else {
+    container.innerHTML = `<a class="header_logo" href="index.html">
+          <img
+            src="src/image-resources/Auction-house-logo.PNG"
+            alt="Auction House Logo"
+            class="header_logo"
+        /></a>
+
+        <span></span>
+        <label for="hamburger_menu" class="menubox"
+          ><i class="fas fa-bars" id="menu_icon"></i
+        ></label>
+        <input type="checkbox" name="hamburger_menu" id="hamburger_menu" />`;
+  }
+}
