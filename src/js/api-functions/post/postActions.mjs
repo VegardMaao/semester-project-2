@@ -9,27 +9,21 @@ function goToPage(page) {
  * @param {string} url - where to send the data
  * @param {object} formData - what data is sent via the request body
  * @param {object} divForError - a div where error messages are printed
- * @param {string} currentPage - the current page title
  *
  * This function logs you into the social media platform
+ *
+ * NOTE TO ME; Needs to work without switch
  */
 export function login(url, formData, divForError, formName) {
   const headers = {
     "Content-Type": "application/json",
   };
   //   let page;
-  console.log(formName);
-  //   switch (formName) {
-  //     case "Noroff Social Media | Log in":
-  //       page = "feed/index.html";
-  //       break;
-  //     case "Noroff Social Media | Sign up":
-  //       page = "index.html";
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  //   postData(url, formData, headers, divForError, goToPage, page);
+  console.log(url);
+  console.log(formData);
+  const page = "/index.html";
+
+  postData(url, formData, headers, divForError, goToPage, page);
 }
 
 /**

@@ -40,7 +40,7 @@
     </header>
     <main class="moving-main visible">
       <section class="login-section">
-        <form action="submit">
+        <form action="submit" class="login-form">
           <fieldset class="form-to-validate first-form">
             <div>
               <h1>Log in</h1>
@@ -51,7 +51,7 @@
                 class="form-control"
                 id="Inputuser"
                 aria-describeby="usernameHelp"
-                pattern="[a-zA-Z0-9]+@(stud.noroff.no|noroff.no)+$"
+                pattern="[a-zA-Z0-9]+@(stud.noroff.no)+$"
                 placeholder="your@email.com"
                 required
               />
@@ -80,10 +80,11 @@
           Don't have an account? Sign up!
           <i class="fas fa-arrow-down"></i>
         </button>
+        <div class="error-box-login"></div>
       </section>
 
       <section class="signup-secton">
-        <form action="submit">
+        <form action="submit" class="signin-form">
           <fieldset class="form-to-validate second-form">
             <div>
               <h2>Sign up for Noroff Social Media</h2>
@@ -110,7 +111,7 @@
                 class="form-control"
                 id="email"
                 aria-describeby="usernameHelp"
-                pattern="[a-zA-Z0-9]+@(stud.noroff.no|noroff.no)+$"
+                pattern="[a-zA-Z0-9]+@(stud.noroff.no)+$"
                 placeholder="your@email.com"
                 required
               />
@@ -140,6 +141,7 @@
           Do you have an account? Log in!
           <i class="fas fa-arrow-up"></i>
         </button>
+        <div class="error-box-signup"></div>
       </section>
     </main>
     <footer>
