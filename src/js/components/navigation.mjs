@@ -20,7 +20,6 @@ export function createNavigation(container, array) {
 
 export function makeLogoBanner(container) {
   const token = localStorage.getItem("userName");
-  console.log(token);
   if (!token) {
     container.innerHTML = `<a class="header_logo" href="../index.html">
     <img
