@@ -35,9 +35,9 @@ export function makeLogoBanner(container) {
   ></label>
   <input type="checkbox" name="hamburger_menu" id="hamburger_menu" />`;
   } else {
-    container.innerHTML = `<a class="header_logo" href="index.html">
+    container.innerHTML = `<a class="header_logo" href="../index.html">
           <img
-            src="src/image-resources/Auction-house-logo.PNG"
+            src="../src/image-resources/Auction-house-logo.PNG"
             alt="Auction House Logo"
             class="header_logo"
         /></a>

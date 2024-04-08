@@ -10,7 +10,6 @@
  * Then runs it through the login function below.
  */
 export function submitForm(form, url, action, divForError, currentPage) {
-  console.log("hello");
   const formData = new FormData(form);
   const formdataOBj = {};
   formData.forEach((value, key) => (formdataOBj[key] = value));

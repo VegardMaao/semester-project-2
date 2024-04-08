@@ -6,5 +6,5 @@
  * prints error message into a domElement
  */
 export function errorMsg(domElement, error) {
-  domElement.innerHTML = `${error}`;
+  domElement.innerHTML = `<p>${error}</p>`;
 }
