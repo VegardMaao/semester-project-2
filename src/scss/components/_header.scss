@@ -1,0 +1,77 @@
+@use "../utilities/variables.scss" as variables;
+
+header {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 5%;
+
+  header > a {
+    width: 100px;
+    display: flex;
+    align-items: center;
+  }
+
+  .header_logo {
+    height: 50px;
+    width: 55px;
+    position: relative;
+    justify-self: start;
+    z-index: 1;
+  }
+
+  .logo_banner {
+    width: 85%;
+    display: grid;
+    grid-template-columns: 5fr 1fr 1fr;
+    grid-auto-flow: row;
+    justify-items: center;
+  }
+
+  #hamburger_menu {
+    display: none;
+  }
+
+  nav {
+    position: absolute;
+    width: 100%;
+    height: 404px;
+    top: -500px;
+    transition: 500ms;
+
+    .nav_ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-self: flex-end;
+      justify-content: space-evenly;
+      margin: 0px;
+      background-color: map-get($map: variables.$colors, $key: brightblue);
+      width: 100%;
+      height: 100%;
+      position: relative;
+      border-top: none;
+      padding: 50px 0px 0px 0px;
+
+      li {
+        list-style: none;
+        margin: 10px 25px;
+
+        a {
+          font-size: 1.5rem;
+          text-decoration: none;
+          padding: 0px 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  header {
+    margin-top: 2%;
+  }
+}

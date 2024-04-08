@@ -1,0 +1,21 @@
+@use "./components/header";
+@use "./components/_footer";
+@use "./components/images";
+@use "./components/_text-components";
+@use "./components/btns-and-ctas";
+@use "./components/forms";
+@use "./components/animations";
+@use "./utilities/variables" as variables;
+
+body {
+  background-color: map-get($map: variables.$colors, $key: offwhite);
+  margin: 0;
+}
+
+main {
+  min-height: 90vh;
+}
+
+section {
+  margin-bottom: 25px;
+}
