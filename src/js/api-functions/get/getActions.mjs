@@ -23,13 +23,16 @@ export function printFeed(domElement, postsArray) {
     const endTime = slicedEndsDateAndTime[1];
     domElement.innerHTML += `
       <div class="single-listing">
-      <img
-        src="${media}"
-      />
-      <h3>${title}</h3>
-      <p>${description}</p>
+      <a href="/pages/single-listing.html?${id}"><img
+      src="${media}"
+    /></a>
+    <a href="/pages/single-listing.html?${id}">
+      <h3 class="item-title">${title}</h3>
+      </a>
+      <p class="item-description">${description}</p>
       <p>BIDS ${_count.bids}</p>
       <p>Bidding ends the ${endDate} at ${endTime}</p>
+      <a class="goto-bid" href="/pages/single-listing.html?${id}"><p>Make a bid</p></a>
       <div>
         <p>tags: ${tags}</p>
       </div>
