@@ -1,0 +1,61 @@
+@use "../utilities/variables" as variables;
+
+.all-listings-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    form,
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    input,
+    select,
+    label {
+      height: 2rem;
+      font-size: 1rem;
+      margin: 10px 2px;
+    }
+  }
+}
+
+.all-listings {
+  max-width: 750px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  margin: auto;
+  text-align: center;
+
+  .single-listing {
+    border: 2px solid map-get($map: variables.$colors, $key: deepblue);
+    max-width: 250px;
+    width: 100%;
+    max-height: 500px;
+    height: 100%;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+@media (width <= 1250px) {
+  .all-listings {
+    grid-template-columns: 1fr 1fr;
+  }
+}
