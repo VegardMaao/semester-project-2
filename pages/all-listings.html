@@ -56,22 +56,24 @@
       <section class="all-listings-section">
         <h2>Browse all listings below</h2>
 
-        <form class="options">
-          <fieldset class="search-field">
+        <div class="options">
+          <form action="#" class="search-field">
             <input
               type="search"
               placeholder="Search"
               id="site-search"
-              name="q"
+              name="searchText"
+              aria-label="Search"
             />
-            <select name="search-keys" id="search-keys">
+            <select name="search-keys" id="searchKeys">
               <option value="">All</option>
               <option value="title">Title</option>
               <option value="body">Description</option>
+              <option value="tags">Tags</option>
             </select>
-          </fieldset>
+          </form>
 
-          <fieldset action="#" class="">
+          <form action="#" class="">
             <label for="sort-by">Sort By</label>
             <select name="sort-by" id="sort-by">
               <option value="default">Default</option>
@@ -80,8 +82,13 @@
               <option value="most-bids">Most Bids</option>
               <option value="least-bids">Least Bids</option>
             </select>
-          </fieldset>
-        </form>
+          </form>
+
+          <form action="#">
+            <label for="show-inactive">Show inactive posts?</label>
+            <input type="checkbox" name="show-inactive" id="show-inactive" />
+          </form>
+        </div>
 
         <div class="all-listings"></div>
       </section>

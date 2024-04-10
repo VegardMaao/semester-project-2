@@ -7,22 +7,36 @@ let completeUrl;
 
 const allListingsDOM = document.querySelector(".all-listings");
 
-endpoint = "/auction/listings?_seller=true&_bids=true";
+endpoint = "/auction/listings?_active=true&_seller=true&_bids=true";
 completeUrl = baseUrl + endpoint;
 
 getData.getData(completeUrl, allListingsDOM, getActions.printFeed);
 
 const searchOptions = document.querySelector(".options");
+const searchForm = document.querySelector(".search-field");
 const searchInp = document.querySelector("#site-search");
 const searchBy = document.querySelector("#search-keys");
 const sortingInp = document.querySelector("#sort-by");
+const showInactivePosts = document.querySelector("#show-inactive");
 
 searchOptions.onsubmit = (e) => {
   e.preventDefault();
 };
 
+showInactivePosts.addEventListener("change", (e) => {
+  console.dir(showInactivePosts);
+  if (showInactivePosts.checked === true) {
+    endpoint = "/auction/listings?_active=false&_seller=true&_bids=true";
+    completeUrl = baseUrl + endpoint;
+  } else {
+    endpoint = "/auction/listings?_active=true&_seller=true&_bids=true";
+    completeUrl = baseUrl + endpoint;
+  }
+  getData.getData(completeUrl, allListingsDOM, getActions.printFeed);
+  sortingInp.value = "default";
+});
+
 sortingInp.addEventListener("change", (e) => {
-  console.log(sortingInp.value);
   allListingsDOM.innerHTML = "";
 
   switch (sortingInp.value) {
@@ -58,3 +72,17 @@ sortingInp.addEventListener("change", (e) => {
       break;
   }
 });
+
+searchInp.onkeyup = () => {
+  //   console.log("hello");
+  //   console.dir(searchForm);
+  const willBeSearchParams = new FormData(searchForm);
+  const searchParams = {};
+  willBeSearchParams.forEach((value, key) => (searchParams[key] = value));
+  getData.getData(
+    completeUrl,
+    allListingsDOM,
+    getActions.searchArray,
+    searchParams
+  );
+};

@@ -1,9 +1,6 @@
-const currentDate = new Date().toJSON();
-let today = new Date(currentDate);
-
 /**
  *
- * @param {Array} postsArray
+ * @param {Array} listingsArray
  * @param {object} domElement
  *
  * This function takes the array of posts, and a DOM comment, then produces
@@ -12,10 +9,10 @@ let today = new Date(currentDate);
  * Posts without title or content are skipped because I think they look ugly and don't
  * provide anything to the page.
  */
-export function printFeed(domElement, postsArray) {
+export function printFeed(domElement, listingsArray) {
   domElement.innerHTML = "";
   const myUserName = localStorage.getItem("userName");
-  for (let i = 0; i < postsArray.length; i++) {
+  for (let i = 0; i < listingsArray.length; i++) {
     const {
       title,
       description,
@@ -26,7 +23,7 @@ export function printFeed(domElement, postsArray) {
       tags,
       bids,
       seller,
-    } = postsArray[i];
+    } = listingsArray[i];
     const highestBid = bids[bids.length - 1];
     const endsDate = endsAt.replaceAll("-", ".");
     const slicedEndsDateAndTime = endsDate
@@ -79,22 +76,22 @@ export function printFeed(domElement, postsArray) {
 
 /**
  * Sorts an array before creating HTML
- * @param {array} postsArray - array of posts from the API
+ * @param {array} listingsArray - array of posts from the API
  * @param {object} domElement - where in the DOM the new array is printed
  * @param {string} sortBy - how to sort the array
  * This function sorts my array before printing out the feed in a new order.
  */
-export function sortArray(domElement, postsArray, sortBy) {
+export function sortArray(domElement, listingsArray, sortBy) {
   switch (sortBy) {
     case "most-bids":
-      const arrayByMostBids = postsArray.sort(function (x, y) {
+      const arrayByMostBids = listingsArray.sort(function (x, y) {
         return y._count.bids - x._count.bids;
       });
       printFeed(domElement, arrayByMostBids);
       break;
 
     case "least-bids":
-      const arrayByLeastBids = postsArray
+      const arrayByLeastBids = listingsArray
         .sort(function (x, y) {
           return y._count.bids - x._count.bids;
         })
@@ -106,4 +103,55 @@ export function sortArray(domElement, postsArray, sortBy) {
     default:
       break;
   }
+}
+
+/**
+ *
+ * @param {array} listingsArray - an array containing all posts
+ * @param {object} domElement - the object where I print my HTML, only there to be passed down to printFeed();
+ * @param {object} searchQuery - an object containing both what I am searching in (title, body or both) and what string I want the post to includce
+ *
+ * This function lets me search my array by title, body or both.
+ */
+export function searchArray(domElement, listingsArray, searchQuery) {
+  let filteredArray;
+  const searchWord = searchQuery.searchText.toLowerCase();
+  const searchIn = searchQuery.searchKeys;
+
+  if (!searchWord) {
+    printFeed(domElement, listingsArray);
+  }
+
+  if (!searchIn) {
+    filteredArray = listingsArray.filter((listing) => {
+      const { title, description, tags } = listing;
+      const lowerCaseTitle = title.toLowerCase();
+      const lowerCaseBody = description.toLowerCase();
+      const lowerCaseTags = tags.map((v) => v.toLowerCase()).toString();
+      console.log(lowerCaseTags);
+      if (title && description && tags) {
+        return (
+          lowerCaseTitle.includes(`${searchWord}`) ||
+          lowerCaseBody.includes(`${searchWord}`) ||
+          lowerCaseTags.includes(`${searchWord}`)
+        );
+      } else if (!description) {
+        return lowerCaseTitle.includes(`${searchWord}`);
+      }
+    });
+  } else {
+    filteredArray = listingsArray.filter((listing) => {
+      const { title, description } = listing;
+      if (searchIn === "title") {
+        return lowerCaseTitle.includes(`${searchWord}`);
+      } else if (searchIn === "description" && description) {
+        return lowerCaseBody.includes(`${searchWord}`);
+      } else if (searchIn === "tags" && tags) {
+        lowerCaseTags.includes(`${searchWord}`);
+      }
+    });
+  }
+  console.log(filteredArray);
+  domElement.innerHTML = "";
+  printFeed(domElement, filteredArray);
 }
