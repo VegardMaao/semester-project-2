@@ -19,6 +19,11 @@ export const navItems = [
     link: "#",
     target: "_self",
   },
+  {
+    title: "Log Out",
+    link: "#",
+    target: "_self",
+  },
 ];
 
 export const footerText = [

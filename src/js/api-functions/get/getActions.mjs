@@ -1,3 +1,5 @@
+const myUserName = localStorage.getItem("userName");
+
 /**
  *
  * @param {Array} listingsArray
@@ -35,12 +37,12 @@ export function printFeed(domElement, listingsArray) {
     if (!highestBid) {
       domElement.innerHTML += `
       <div class="single-listing">
-      <a href="/pages/single-listing.html?${id}"><img
+      <a href="/pages/single-listing.html?id=${id}"><img
       src="${media}"
     /></a>
 
     <div>
-    <a href="/pages/single-listing.html?${id}">
+    <a href="/pages/single-listing.html?id=${id}">
       <h3 class="item-title">${title}</h3>
       </a>
       <a href="/pages/profile.html?seller=${seller.name}"><p>By ${seller.name}</p></a>
@@ -49,7 +51,7 @@ export function printFeed(domElement, listingsArray) {
       <p>Bidding ends the ${endDate} at ${endTime}</p>
       </div>
 
-      <a class="goto-bid" href="/pages/single-listing.html?${id}"><p>Make a bid</p></a>
+      <a class="goto-bid" href="/pages/single-listing.html?id=${id}"><p>Make a bid</p></a>
       <div>
       <p>tags: ${tags}</p>
     </div>
@@ -58,12 +60,12 @@ export function printFeed(domElement, listingsArray) {
     } else {
       domElement.innerHTML += `
       <div class="single-listing">
-      <a href="/pages/single-listing.html?${id}"><img
+      <a href="/pages/single-listing.html?id=${id}"><img
       src="${media}"
     /></a>
 
     <div>
-    <a href="/pages/single-listing.html?${id}">
+    <a href="/pages/single-listing.html?id=${id}">
       <h3 class="item-title">${title}</h3>
       </a>
       <a href="/pages/profile.html?seller=${seller.name}"><p>By ${seller.name}</p></a>
@@ -72,7 +74,7 @@ export function printFeed(domElement, listingsArray) {
       <p>Bidding ends the ${endDate} at ${endTime}</p>
       </div>
 
-      <a class="goto-bid" href="/pages/single-listing.html?${id}"><p>Make a bid</p></a>
+      <a class="goto-bid" href="/pages/single-listing.html?id=${id}"><p>Make a bid</p></a>
       <div>
       <p>tags: ${tags}</p>
     </div>
@@ -162,4 +164,40 @@ export function searchArray(domElement, listingsArray, searchQuery) {
   console.log(filteredArray);
   domElement.innerHTML = "";
   printFeed(domElement, filteredArray);
+}
+
+/**
+ * @param {object} domElement - where to print HTML
+ * @param {array} listingData - what HTML to print
+ *
+ * This function prints HTML to the single post DOM element
+ */
+export function singlePostContent(domElement, listingData) {
+  console.dir(domElement);
+  console.log(listingData);
+  const { title, description, media, created, endsAt, seller, _count } =
+    listingData;
+
+  console.log(title, description, media, created, endsAt, seller, _count);
+  // const creationDate = created.replaceAll("-", ".");
+  // const formattedDate = creationDate
+  //   .slice(0, creationDate.length - 14)
+  //   .split(".")
+  //   .reverse()
+  //   .join(".");
+  // domElement.innerHTML = `
+  //   <div class="post d-flex flex-column justify-content-center align-content-center">
+  //       <h1 class="text-center">${title}</h1>
+  //       <p class="text-center">${body}</p>
+  //       <img class="post-img text-center justify-self-center align-self-center" src="${media}" alt="">
+  //       <p class="text-center">Posted the ${formattedDate} by ${author.name}</p>
+  //   </div>
+  //   `;
+
+  // if (author.name === myUserName) {
+  //   domElement.innerHTML += `
+  //       <div class="d-flex justify-content-evenly">
+  //           <button class="delete" id="${id}">delete post</button><button class="edit">edit post</button>
+  //       </div>`;
+  // }
 }
