@@ -12,7 +12,8 @@
     align-items: stretch;
 
     form,
-    div {
+    fieldset {
+      border: none;
       display: flex;
       justify-content: space-between;
     }
@@ -66,10 +67,14 @@
     p {
       margin: 0.5rem;
     }
+
+    .bids-amount {
+      font-weight: 700;
+    }
   }
 }
 
-@media (width <= 1250px) {
+@media (width <= 1000px) {
   .all-listings {
     grid-template-columns: 1fr;
   }

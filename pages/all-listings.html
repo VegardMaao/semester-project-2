@@ -56,30 +56,32 @@
       <section class="all-listings-section">
         <h2>Browse all listings below</h2>
 
-        <div class="options">
-          <div class="search-div">
+        <form class="options">
+          <fieldset class="search-field">
             <input
               type="search"
               placeholder="Search"
               id="site-search"
               name="q"
             />
-            <select name="searchKeys" id="searchKeys">
+            <select name="search-keys" id="search-keys">
               <option value="">All</option>
               <option value="title">Title</option>
               <option value="body">Description</option>
             </select>
-          </div>
+          </fieldset>
 
-          <form action="#" class="">
+          <fieldset action="#" class="">
             <label for="sort-by">Sort By</label>
             <select name="sort-by" id="sort-by">
-              <option value="newest-posts">Newest</option>
-              <option value="oldest-posts">Oldest</option>
-              <option value="most-comments">Most Bids</option>
+              <option value="default">Default</option>
+              <option value="newest-bids">Newest</option>
+              <option value="oldest-bids">Oldest</option>
+              <option value="most-bids">Most Bids</option>
+              <option value="least-bids">Least Bids</option>
             </select>
-          </form>
-        </div>
+          </fieldset>
+        </form>
 
         <div class="all-listings"></div>
       </section>
