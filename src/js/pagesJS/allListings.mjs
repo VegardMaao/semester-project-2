@@ -24,7 +24,9 @@ searchOptions.onsubmit = (e) => {
 };
 
 showInactivePosts.addEventListener("change", (e) => {
-  console.dir(showInactivePosts);
+  searchInp.value = "";
+  sortingInp.value = "default";
+
   if (showInactivePosts.checked === true) {
     endpoint = "/auction/listings?_active=false&_seller=true&_bids=true";
     completeUrl = baseUrl + endpoint;
@@ -74,8 +76,6 @@ sortingInp.addEventListener("change", (e) => {
 });
 
 searchInp.onkeyup = () => {
-  //   console.log("hello");
-  //   console.dir(searchForm);
   const willBeSearchParams = new FormData(searchForm);
   const searchParams = {};
   willBeSearchParams.forEach((value, key) => (searchParams[key] = value));

@@ -39,18 +39,20 @@
 
   .single-listing {
     border: 2px solid map-get($map: variables.$colors, $key: deepblue);
-    max-width: 250px;
-    width: 100%;
-    max-height: 500px;
-    height: 100%;
+    width: 250px;
+    height: 600px;
     margin: 50px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    grid-template-rows: 4fr 1fr 1fr 1fr;
+    justify-items: center;
 
-    a {
+    a,
+    h3,
+    p {
+      max-width: 150px;
+      word-wrap: break-word;
       text-decoration: none;
     }
 
@@ -60,7 +62,7 @@
     }
 
     img {
-      max-width: fit-content;
+      max-width: 100%;
       max-height: 200px;
     }
 

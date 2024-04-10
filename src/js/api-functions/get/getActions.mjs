@@ -11,7 +11,6 @@
  */
 export function printFeed(domElement, listingsArray) {
   domElement.innerHTML = "";
-  const myUserName = localStorage.getItem("userName");
   for (let i = 0; i < listingsArray.length; i++) {
     const {
       title,
@@ -31,6 +30,7 @@ export function printFeed(domElement, listingsArray) {
       .split("T");
     const endDate = slicedEndsDateAndTime[0].split(".").reverse().join(".");
     const endTime = slicedEndsDateAndTime[1].replaceAll(".", "");
+    const shorterDescription = description.substring(0, 50);
 
     if (!highestBid) {
       domElement.innerHTML += `
@@ -38,13 +38,17 @@ export function printFeed(domElement, listingsArray) {
       <a href="/pages/single-listing.html?${id}"><img
       src="${media}"
     /></a>
+
+    <div>
     <a href="/pages/single-listing.html?${id}">
       <h3 class="item-title">${title}</h3>
       </a>
       <a href="/pages/profile.html?seller=${seller.name}"><p>By ${seller.name}</p></a>
-      <p class="item-description">${description}</p>
+      <p class="item-description">${shorterDescription}</p>
       <p class="bids-amount">${_count.bids} bids</p>
       <p>Bidding ends the ${endDate} at ${endTime}</p>
+      </div>
+
       <a class="goto-bid" href="/pages/single-listing.html?${id}"><p>Make a bid</p></a>
       <div>
       <p>tags: ${tags}</p>
@@ -53,23 +57,27 @@ export function printFeed(domElement, listingsArray) {
             `;
     } else {
       domElement.innerHTML += `
-    <div class="single-listing">
-    <a href="/pages/single-listing.html?${id}"><img
-    src="${media}"
-  /></a>
-  <a href="/pages/single-listing.html?${id}">
-    <h3 class="item-title">${title}</h3>
-    </a>
-    <a href="/pages/profile.html?seller=${seller.name}"><p>By ${seller.name}</p></a>
-    <p class="item-description">${description}</p>
-    <p class="bids-amount">${_count.bids} bids, last bid at ${highestBid.amount}</p>
-    <p>Bidding ends the ${endDate} at ${endTime}</p>
-    <a class="goto-bid" href="/pages/single-listing.html?${id}"><p>Make a bid</p></a>
+      <div class="single-listing">
+      <a href="/pages/single-listing.html?${id}"><img
+      src="${media}"
+    /></a>
+
     <div>
+    <a href="/pages/single-listing.html?${id}">
+      <h3 class="item-title">${title}</h3>
+      </a>
+      <a href="/pages/profile.html?seller=${seller.name}"><p>By ${seller.name}</p></a>
+      <p class="item-description">${shorterDescription}</p>
+      <p class="bids-amount">${_count.bids} bids</p>
+      <p>Bidding ends the ${endDate} at ${endTime}</p>
+      </div>
+
+      <a class="goto-bid" href="/pages/single-listing.html?${id}"><p>Make a bid</p></a>
+      <div>
       <p>tags: ${tags}</p>
     </div>
-  </div>
-          `;
+    </div>
+            `;
     }
   }
 }
