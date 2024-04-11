@@ -173,31 +173,55 @@ export function searchArray(domElement, listingsArray, searchQuery) {
  * This function prints HTML to the single post DOM element
  */
 export function singlePostContent(domElement, listingData) {
-  console.dir(domElement);
   console.log(listingData);
-  const { title, description, media, created, endsAt, seller, _count } =
+  const { title, description, media, created, endsAt, seller, _count, bids } =
     listingData;
 
-  console.log(title, description, media, created, endsAt, seller, _count);
-  // const creationDate = created.replaceAll("-", ".");
-  // const formattedDate = creationDate
-  //   .slice(0, creationDate.length - 14)
-  //   .split(".")
-  //   .reverse()
-  //   .join(".");
-  // domElement.innerHTML = `
-  //   <div class="post d-flex flex-column justify-content-center align-content-center">
-  //       <h1 class="text-center">${title}</h1>
-  //       <p class="text-center">${body}</p>
-  //       <img class="post-img text-center justify-self-center align-self-center" src="${media}" alt="">
-  //       <p class="text-center">Posted the ${formattedDate} by ${author.name}</p>
-  //   </div>
-  //   `;
+  // console.log(title, description, media, created, endsAt, seller, _count, bids);
+  const creationDate = created.replaceAll("-", ".");
+  const formattedDate = creationDate
+    .slice(0, creationDate.length - 14)
+    .split(".")
+    .reverse()
+    .join(".");
 
-  // if (author.name === myUserName) {
-  //   domElement.innerHTML += `
-  //       <div class="d-flex justify-content-evenly">
-  //           <button class="delete" id="${id}">delete post</button><button class="edit">edit post</button>
-  //       </div>`;
-  // }
+  const highestBid = bids[bids.length - 1];
+  const endsDate = endsAt.replaceAll("-", ".");
+  const slicedEndsDateAndTime = endsDate
+    .slice(0, endsDate.length - 4)
+    .split("T");
+  const endDate = slicedEndsDateAndTime[0].split(".").reverse().join(".");
+  const endTime = slicedEndsDateAndTime[1].replaceAll(".", "");
+
+  if (bids >= 0) {
+    domElement.innerHTML = `
+    <div class="listing">
+    <img src="${media}" alt="${description}">
+        <h1>${title}</h1>
+        <p class="description">${description}</p>
+        <p class="description bid-amount">Be the first to place a bid!</p>
+        <p class="description">Bidding ends the ${endDate} at ${endTime}</p>
+        
+        <p>Posted the ${formattedDate} by <a href="/pages/profile.html?${seller.name}">${seller.name}</a></p>
+    </div>
+    `;
+  } else {
+    domElement.innerHTML = `
+    <div class="listing">
+    <img src="${media}" alt="${description}">
+        <h1>${title}</h1>
+        <p class="description">${description}</p>
+        <p class="description bid-amount">Currently going at <span class="highest-bid">${highestBid.amount}</span></p>
+        <p class="description">Bidding ends the ${endDate} at ${endTime}</p>
+        <p>Posted the ${formattedDate} by <a href="/pages/profile.html?${seller.name}">${seller.name}</a></p>
+    </div>
+    `;
+  }
+
+  if (seller.name === myUserName) {
+    domElement.innerHTML += `
+        <div >
+            <button class="delete" id="${id}">delete post</button><button class="edit">edit post</button>
+        </div>`;
+  }
 }
