@@ -1,5 +1,6 @@
 import * as getActions from "../api-functions/get/getActions.mjs";
 import * as getData from "../api-functions/get/getData.mjs";
+import * as postActions from "../api-functions/post/postActions.mjs";
 
 const queryString = document.location.search;
 const parameter = new URLSearchParams(queryString);
@@ -16,6 +17,13 @@ const bidInput = document.querySelector("#bidamount");
 
 placeBidForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  const errorDiv = document.querySelector(".error-msg");
+  endpoint = `/auction/listings/${id}/bids`;
+  completeUrl = baseUrl + endpoint;
+  const formData = new FormData(placeBidForm);
+  const formdataOBj = {};
+  formData.forEach((value, key) => (formdataOBj[key] = parseInt(value)));
+  postActions.placeBid(completeUrl, formdataOBj, errorDiv);
 });
 
 const listingObserver = new MutationObserver(function (mutations) {

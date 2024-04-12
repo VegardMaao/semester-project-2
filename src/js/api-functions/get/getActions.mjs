@@ -129,6 +129,7 @@ export function searchArray(domElement, listingsArray, searchQuery) {
   const searchIn = searchQuery.searchKeys;
 
   if (!searchWord) {
+    domElement.innerHTML = "";
     printFeed(domElement, listingsArray);
   }
 

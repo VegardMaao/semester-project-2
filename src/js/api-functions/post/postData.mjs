@@ -1,6 +1,4 @@
 import { errorMsg } from "../../formActions/errorMsg.mjs";
-
-const token = localStorage.getItem("accessToken");
 let error;
 
 /**
