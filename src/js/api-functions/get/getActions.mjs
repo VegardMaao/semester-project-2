@@ -207,39 +207,31 @@ export function searchArray(domElement, listingsArray, searchQuery) {
   let filteredArray;
   const searchWord = searchQuery.searchText.toLowerCase();
   const searchIn = searchQuery.searchKeys;
-
   if (!searchWord) {
     domElement.innerHTML = "";
     printFeed(domElement, listingsArray);
   }
-
   if (!searchIn) {
     filteredArray = listingsArray.filter((listing) => {
       const { title, description, tags } = listing;
       const lowerCaseTitle = title.toLowerCase();
       const lowerCaseBody = description.toLowerCase();
       const lowerCaseTags = tags.map((v) => v.toLowerCase()).toString();
-      console.log(lowerCaseTags);
-      if (title && description && tags) {
-        return (
-          lowerCaseTitle.includes(`${searchWord}`) ||
-          lowerCaseBody.includes(`${searchWord}`) ||
-          lowerCaseTags.includes(`${searchWord}`)
-        );
-      } else if (!description) {
-        return lowerCaseTitle.includes(`${searchWord}`);
-      }
+      return (
+        lowerCaseTitle.includes(searchWord) ||
+        lowerCaseBody.includes(searchWord) ||
+        lowerCaseTags.includes(searchWord)
+      );
     });
   } else {
     filteredArray = listingsArray.filter((listing) => {
-      const { title, description } = listing;
-      if (searchIn === "title") {
-        return lowerCaseTitle.includes(`${searchWord}`);
-      } else if (searchIn === "description" && description) {
-        return lowerCaseBody.includes(`${searchWord}`);
-      } else if (searchIn === "tags" && tags) {
-        lowerCaseTags.includes(`${searchWord}`);
-      }
+      const { title, description, tags } = listing;
+      let searchObject = {
+        title: title.toLowerCase(),
+        description: description.toLowerCase(),
+        tags: tags.map((v) => v.toLowerCase()).toString(),
+      };
+      return searchObject[searchIn].includes(searchWord);
     });
   }
   domElement.innerHTML = "";

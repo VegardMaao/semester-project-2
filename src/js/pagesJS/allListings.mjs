@@ -39,6 +39,16 @@ showInactivePosts.addEventListener("change", (e) => {
   sortingInp.value = "default";
 });
 
+// // For sorting after highest price, decending high -> low
+
+// let highestListing = listingsArray.sort((a, b) => {
+//   if (a.bids.length === 0) return 1;
+//   if (b.bids.length === 0) return -1;
+//   return b.bids[b.bids.length - 1].amount - a.bids[a.bids.length - 1].amount;
+// })[0];
+
+// // For sorting after highest price, decending high -> low
+
 sortingInp.addEventListener("change", (e) => {
   allListingsDOM.innerHTML = "";
 
