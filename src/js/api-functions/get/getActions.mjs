@@ -174,11 +174,8 @@ export function searchArray(domElement, listingsArray, searchQuery) {
  * This function prints HTML to the single post DOM element
  */
 export function singlePostContent(domElement, listingData) {
-  console.log(listingData);
   const { title, description, media, created, endsAt, seller, _count, bids } =
     listingData;
-
-  // console.log(title, description, media, created, endsAt, seller, _count, bids);
   const creationDate = created.replaceAll("-", ".");
   const formattedDate = creationDate
     .slice(0, creationDate.length - 14)

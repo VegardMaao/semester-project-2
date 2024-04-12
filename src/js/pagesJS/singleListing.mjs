@@ -6,18 +6,24 @@ const queryString = document.location.search;
 const parameter = new URLSearchParams(queryString);
 const id = parameter.get("id");
 const singleListingDiv = document.querySelector(".single-listing");
+const placeBidForm = document.querySelector(".make-a-bid");
+const bidInput = document.querySelector("#bidamount");
+const placeBidBtn = document.querySelector(".submit");
+const errorDiv = document.querySelector(".error-msg");
+const userName = localStorage.getItem("userName");
 const baseUrl = "https://api.noroff.dev/api/v1";
 let endpoint = `/auction/listings/${id}?_seller=true&_bids=true`;
 let completeUrl = baseUrl + endpoint;
 
 getData.getData(completeUrl, singleListingDiv, getActions.singlePostContent);
 
-const placeBidForm = document.querySelector(".make-a-bid");
-const bidInput = document.querySelector("#bidamount");
+if (!userName) {
+  placeBidBtn.disabled = true;
+  errorDiv.innerHTML = `<a href="/pages/login.html"><p>Log in to place bid</p></a>`;
+}
 
 placeBidForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const errorDiv = document.querySelector(".error-msg");
   endpoint = `/auction/listings/${id}/bids`;
   completeUrl = baseUrl + endpoint;
   const formData = new FormData(placeBidForm);

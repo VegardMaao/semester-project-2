@@ -18,9 +18,9 @@ export function createNavigation(container, array) {
   }
 }
 
+const name = localStorage.getItem("userName");
 export function makeLogoBanner(container) {
-  const token = localStorage.getItem("userName");
-  if (!token) {
+  if (!name) {
     container.innerHTML = `<a class="header_logo" href="../index.html">
     <img
       src="../src/image-resources/Auction-house-logo.PNG"
