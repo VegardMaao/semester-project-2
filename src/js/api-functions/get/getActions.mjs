@@ -85,6 +85,86 @@ export function printFeed(domElement, listingsArray) {
 }
 
 /**
+ *
+ * @param {object} domElement - where to print out the featured listing
+ * @param {array} listingsArray - array of all listings
+ *
+ * Here I first loop throuh my original array of active listings and  remove all results with 0 bids.
+ * Then I create a new array of listings, with only the highest bid of each listing
+ * Lastly, I sort the new array based on the highest amount and print out a featured object based  on  this
+ */
+export function featuredListing(domElement, listingsArray) {
+  let arrayWithBidsAndID = [];
+  for (let i = 0; i < listingsArray.length; i++) {
+    const {
+      title,
+      description,
+      media,
+      id,
+      _count,
+      endsAt,
+      tags,
+      bids,
+      seller,
+    } = listingsArray[i];
+    if (bids >= 0) {
+      continue;
+    }
+    arrayWithBidsAndID.push({
+      bidAmount: parseInt(bids[bids.length - 1].amount),
+      id: id,
+      title: title,
+      description: description,
+      media: media,
+      _count: _count,
+      endsAt: endsAt,
+      tags: tags,
+      seller: seller,
+    });
+  }
+  const arrayByHighestBid = arrayWithBidsAndID.sort(function (x, y) {
+    return y.bidAmount - x.bidAmount;
+  });
+  const {
+    title,
+    description,
+    media,
+    id,
+    _count,
+    endsAt,
+    tags,
+    bidAmount,
+    seller,
+  } = arrayByHighestBid[0];
+  const endsDate = endsAt.replaceAll("-", ".");
+  const slicedEndsDateAndTime = endsDate
+    .slice(0, endsDate.length - 4)
+    .split("T");
+  const endDate = slicedEndsDateAndTime[0].split(".").reverse().join(".");
+  const endTime = slicedEndsDateAndTime[1].replaceAll(".", "");
+
+  domElement.innerHTML = `
+    <div class="hero-image">
+          <div class="hero_story">
+          <a href="/pages/single-listing.html?id=${id}">
+          <h1>${title}</h1>
+      </a>
+            <p>
+              This is the featured listing right now!
+            </p>
+            <p>
+              ${description}
+            </p>
+            <p>Currently going at ${bidAmount}. Bidding ends the ${endDate} at ${endTime}</p>
+            <a href="/pages/single-listing.html?id=${id}" class="cta-btn">Place a bid!</a>
+          </div>
+        </div>
+        `;
+
+  domElement.style.backgroundImage = `url(${media})`;
+}
+
+/**
  * Sorts an array before creating HTML
  * @param {array} listingsArray - array of posts from the API
  * @param {object} domElement - where in the DOM the new array is printed
@@ -162,7 +242,6 @@ export function searchArray(domElement, listingsArray, searchQuery) {
       }
     });
   }
-  console.log(filteredArray);
   domElement.innerHTML = "";
   printFeed(domElement, filteredArray);
 }

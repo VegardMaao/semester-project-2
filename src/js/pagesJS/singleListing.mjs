@@ -32,6 +32,10 @@ placeBidForm.addEventListener("submit", (e) => {
   postActions.placeBid(completeUrl, formdataOBj, errorDiv);
 });
 
+/**
+ * Observes changes to a DOM element, in this case the "bid now" prompt.
+ * This is done in order to set the minimum amount a user can bid
+ */
 const listingObserver = new MutationObserver(function (mutations) {
   mutations.forEach(function () {
     const bidAmountString = document.querySelector(".bid-amount").innerHTML;

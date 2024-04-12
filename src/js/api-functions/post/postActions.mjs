@@ -61,15 +61,12 @@ export function makePost(url, formData, divForError) {
   postData(url, formData, headerData, divForError);
 }
 
-// export function postComment(url, formData, divForError) {
-//   const token = localStorage.getItem("accessToken");
-//   const headerData = {
-//     "Content-Type": "application/json",
-//     Authorization: `Bearer ${token}`,
-//   };
-//   postData(url, formData, headerData, divForError);
-// }
-
+/**
+ *
+ * @param {string} url - The url to make a bid
+ * @param {object} amount - the amount to bid, value of the amount key must be a number
+ * @param {object} divForError - a DOM element where I print any error messages
+ */
 export function placeBid(url, amount, divForError) {
   const token = localStorage.getItem("accessToken");
   const headerData = {

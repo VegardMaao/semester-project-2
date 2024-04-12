@@ -1,23 +1,24 @@
 import * as getActions from "../api-functions/get/getActions.mjs";
 import * as getData from "../api-functions/get/getData.mjs";
 
-const baseUrl = "https://api.noroff.dev/api/v1";
-let endpoint;
-let completeUrl;
-
+const featuredSection = document.querySelector(".featured-section");
 const allListingsDOM = document.querySelector(".all-listings");
-
-endpoint = "/auction/listings?_active=true&_seller=true&_bids=true";
-completeUrl = baseUrl + endpoint;
-
-getData.getData(completeUrl, allListingsDOM, getActions.printFeed);
-
 const searchOptions = document.querySelector(".options");
 const searchForm = document.querySelector(".search-field");
 const searchInp = document.querySelector("#site-search");
 const searchBy = document.querySelector("#search-keys");
 const sortingInp = document.querySelector("#sort-by");
 const showInactivePosts = document.querySelector("#show-inactive");
+const baseUrl = "https://api.noroff.dev/api/v1";
+let endpoint;
+let completeUrl;
+
+endpoint = "/auction/listings?_active=true&_seller=true&_bids=true";
+completeUrl = baseUrl + endpoint;
+
+getData.getData(completeUrl, featuredSection, getActions.featuredListing);
+
+getData.getData(completeUrl, allListingsDOM, getActions.printFeed);
 
 searchOptions.onsubmit = (e) => {
   e.preventDefault();

@@ -21,7 +21,6 @@ export async function getData(url, domElement, action, actionParam) {
     const fetchResponse = await fetch(url, dataForPostRequest);
     const finishedResponse = await fetchResponse.json();
     action(domElement, finishedResponse, actionParam);
-    console.log(finishedResponse);
     return finishedResponse;
   } catch (error) {
     console.log(error);
