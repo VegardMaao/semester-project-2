@@ -81,7 +81,6 @@ export function printFeed(domElement, listingsArray) {
       <a class="goto-bid" href="/pages/single-listing.html?id=${id}"><p>Make a bid</p></a>
       <div>
       <p>tags: ${tags}</p>
-      <p>${created}</p>
     </div>
     </div>
             `;
