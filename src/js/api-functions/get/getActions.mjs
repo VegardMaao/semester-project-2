@@ -12,6 +12,7 @@ const myUserName = localStorage.getItem("userName");
  * provide anything to the page.
  */
 export function printFeed(domElement, listingsArray) {
+  let shorterDescription = "";
   domElement.innerHTML = "";
   for (let i = 0; i < listingsArray.length; i++) {
     const {
@@ -24,6 +25,7 @@ export function printFeed(domElement, listingsArray) {
       tags,
       bids,
       seller,
+      created,
     } = listingsArray[i];
     const highestBid = bids[bids.length - 1];
     const endsDate = endsAt.replaceAll("-", ".");
@@ -32,7 +34,9 @@ export function printFeed(domElement, listingsArray) {
       .split("T");
     const endDate = slicedEndsDateAndTime[0].split(".").reverse().join(".");
     const endTime = slicedEndsDateAndTime[1].replaceAll(".", "");
-    const shorterDescription = description.substring(0, 50);
+    if (description) {
+      shorterDescription = description.substring(0, 50);
+    }
 
     if (!highestBid) {
       domElement.innerHTML += `
@@ -46,7 +50,7 @@ export function printFeed(domElement, listingsArray) {
       <h3 class="item-title">${title}</h3>
       </a>
       <a href="/pages/profile.html?seller=${seller.name}"><p>By ${seller.name}</p></a>
-      <p class="item-description">${shorterDescription}</p>
+      <p class="item-description">${description}</p>
       <p class="bids-amount">${_count.bids} bids</p>
       <p>Bidding ends the ${endDate} at ${endTime}</p>
       </div>
@@ -77,6 +81,7 @@ export function printFeed(domElement, listingsArray) {
       <a class="goto-bid" href="/pages/single-listing.html?id=${id}"><p>Make a bid</p></a>
       <div>
       <p>tags: ${tags}</p>
+      <p>${created}</p>
     </div>
     </div>
             `;
@@ -173,6 +178,13 @@ export function featuredListing(domElement, listingsArray) {
  */
 export function sortArray(domElement, listingsArray, sortBy) {
   switch (sortBy) {
+    case "default":
+      printFeed(domElement, listingsArray);
+      break;
+    case "newest-bids":
+      printFeed(domElement, listingsArray);
+    case "oldest-bids":
+      printFeed(domElement, listingsArray);
     case "most-bids":
       const arrayByMostBids = listingsArray.sort(function (x, y) {
         return y._count.bids - x._count.bids;
@@ -213,7 +225,8 @@ export function searchArray(domElement, listingsArray, searchQuery) {
   }
   if (!searchIn) {
     filteredArray = listingsArray.filter((listing) => {
-      const { title, description, tags } = listing;
+      const { title = "", description = "", tags = [] } = listing;
+      console.log(title, description, tags);
       const lowerCaseTitle = title.toLowerCase();
       const lowerCaseBody = description.toLowerCase();
       const lowerCaseTags = tags.map((v) => v.toLowerCase()).toString();
@@ -270,7 +283,7 @@ export function singlePostContent(domElement, listingData) {
         <p class="description">${description}</p>
         <p class="description bid-amount">Be the first to place a bid!</p>
         <p class="description">Bidding ends the ${endDate} at ${endTime}</p>
-        
+
         <p>Posted the ${formattedDate} by <a href="/pages/profile.html?${seller.name}">${seller.name}</a></p>
     </div>
     `;

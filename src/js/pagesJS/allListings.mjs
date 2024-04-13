@@ -55,15 +55,30 @@ sortingInp.addEventListener("change", (e) => {
   switch (sortingInp.value) {
     case "default":
       completeUrl = `${baseUrl}${endpoint}`;
-      getData.getData(completeUrl, allListingsDOM, getActions.printFeed);
+      getData.getData(
+        completeUrl,
+        allListingsDOM,
+        getActions.sortArray,
+        sortingInp.value
+      );
       break;
     case "newest-bids":
       completeUrl = `${baseUrl}${endpoint}&sort=created&sortOrder=desc`;
-      getData.getData(completeUrl, allListingsDOM, getActions.printFeed);
+      getData.getData(
+        completeUrl,
+        allListingsDOM,
+        getActions.sortArray,
+        sortingInp.value
+      );
       break;
     case "oldest-bids":
       completeUrl = `${baseUrl}${endpoint}&sort=created&sortOrder=asc`;
-      getData.getData(completeUrl, allListingsDOM, getActions.printFeed);
+      getData.getData(
+        completeUrl,
+        allListingsDOM,
+        getActions.sortArray,
+        sortingInp.value
+      );
       break;
     case "most-bids":
       getData.getData(
@@ -84,6 +99,18 @@ sortingInp.addEventListener("change", (e) => {
     default:
       break;
   }
+});
+
+searchForm.addEventListener("change", (e) => {
+  const willBeSearchParams = new FormData(searchForm);
+  const searchParams = {};
+  willBeSearchParams.forEach((value, key) => (searchParams[key] = value));
+  getData.getData(
+    completeUrl,
+    allListingsDOM,
+    getActions.searchArray,
+    searchParams
+  );
 });
 
 searchInp.onkeyup = () => {
