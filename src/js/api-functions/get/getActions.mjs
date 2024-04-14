@@ -25,7 +25,6 @@ export function printFeed(domElement, listingsArray) {
       tags,
       bids,
       seller,
-      created,
     } = listingsArray[i];
     const highestBid = bids[bids.length - 1];
     const endsDate = endsAt.replaceAll("-", ".");
@@ -38,7 +37,7 @@ export function printFeed(domElement, listingsArray) {
       shorterDescription = description.substring(0, 50);
     }
 
-    if (!highestBid) {
+    if (highestBid >= 0) {
       domElement.innerHTML += `
       <div class="single-listing">
       <a href="/pages/single-listing.html?id=${id}"><img
@@ -51,7 +50,7 @@ export function printFeed(domElement, listingsArray) {
       </a>
       <a href="/pages/profile.html?seller=${seller.name}"><p>By ${seller.name}</p></a>
       <p class="item-description">${description}</p>
-      <p class="bids-amount">${_count.bids} bids</p>
+      <p class="bids-amount">${_count.bids} bids, be the first to bid!</p>
       <p>Bidding ends the ${endDate} at ${endTime}</p>
       </div>
 
@@ -74,7 +73,7 @@ export function printFeed(domElement, listingsArray) {
       </a>
       <a href="/pages/profile.html?seller=${seller.name}"><p>By ${seller.name}</p></a>
       <p class="item-description">${shorterDescription}</p>
-      <p class="bids-amount">${_count.bids} bids</p>
+      <p class="bids-amount">${_count.bids} bids,  going at ${highestBid.amount}</p>
       <p>Bidding ends the ${endDate} at ${endTime}</p>
       </div>
 
@@ -184,13 +183,50 @@ export function sortArray(domElement, listingsArray, sortBy) {
       printFeed(domElement, listingsArray);
     case "oldest-bids":
       printFeed(domElement, listingsArray);
+    case "highest-price":
+      let arrayWithBidsAndID = [];
+      for (let i = 0; i < listingsArray.length; i++) {
+        const {
+          title,
+          description,
+          media,
+          id,
+          _count,
+          endsAt,
+          tags,
+          bids,
+          seller,
+        } = listingsArray[i];
+        if (bids >= 0) {
+          continue;
+        }
+        arrayWithBidsAndID.push({
+          bids: [
+            {
+              amount: parseInt(bids[bids.length - 1].amount),
+            },
+          ],
+          id: id,
+          title: title,
+          description: description,
+          media: media,
+          _count: _count,
+          endsAt: endsAt,
+          tags: tags,
+          seller: seller,
+        });
+      }
+      const arrayByHighestBid = arrayWithBidsAndID.sort(function (x, y) {
+        return y.bids[0].amount - x.bids[0].amount;
+      });
+      printFeed(domElement, arrayByHighestBid);
+      break;
     case "most-bids":
       const arrayByMostBids = listingsArray.sort(function (x, y) {
         return y._count.bids - x._count.bids;
       });
       printFeed(domElement, arrayByMostBids);
       break;
-
     case "least-bids":
       const arrayByLeastBids = listingsArray
         .sort(function (x, y) {
