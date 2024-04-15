@@ -268,7 +268,6 @@ export function searchArray(domElement, listingsArray, searchQuery) {
   if (!searchIn) {
     filteredArray = listingsArray.filter((listing) => {
       const { title = "", description = "", tags = [] } = listing;
-      console.log(title, description, tags);
       const lowerCaseTitle = title.toLowerCase();
       const lowerCaseBody = description.toLowerCase();
       const lowerCaseTags = tags.map((v) => v.toLowerCase()).toString();
