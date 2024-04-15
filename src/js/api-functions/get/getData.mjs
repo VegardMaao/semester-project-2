@@ -1,5 +1,4 @@
-const token = localStorage.getItem("token");
-
+const token = localStorage.getItem("accessToken");
 /**
  *
  * @param {string} url - url for the fetch request
@@ -20,7 +19,7 @@ export async function getData(url, domElement, action, actionParam) {
   try {
     const fetchResponse = await fetch(url, dataForPostRequest);
     const finishedResponse = await fetchResponse.json();
-    action(domElement, finishedResponse, actionParam);
+    action(domElement, finishedResponse.data, actionParam);
     return finishedResponse;
   } catch (error) {
     console.log(error);

@@ -27,6 +27,10 @@ export function printFeed(domElement, listingsArray) {
       seller,
     } = listingsArray[i];
 
+    if (media.length === 0) {
+      media.push({ alt: "", url: "" });
+    }
+
     const endsDate = endsAt.replaceAll("-", ".");
     const slicedEndsDateAndTime = endsDate
       .slice(0, endsDate.length - 4)
@@ -40,14 +44,14 @@ export function printFeed(domElement, listingsArray) {
       domElement.innerHTML += `
       <div class="single-listing">
       <a href="/pages/single-listing.html?id=${id}"><img
-      src="${media}"
+      src="${media[0].url}"
     /></a>
 
     <div>
     <a href="/pages/single-listing.html?id=${id}">
       <h3 class="item-title">${title}</h3>
       </a>
-      <a href="/pages/profile.html?seller=${seller.name}"><p>By ${seller.name}</p></a>
+      <a href="/pages/profile.html?profile=${seller.name}"><p>By ${seller.name}</p></a>
       <p class="item-description">${description}</p>
       <p class="bids-amount">${_count.bids} bids, be the first to bid!</p>
       <p>Bidding ends the ${endDate} at ${endTime}</p>
@@ -64,14 +68,14 @@ export function printFeed(domElement, listingsArray) {
       domElement.innerHTML += `
       <div class="single-listing">
       <a href="/pages/single-listing.html?id=${id}"><img
-      src="${media}"
+      src="${media[0].url}"
     /></a>
 
     <div>
     <a href="/pages/single-listing.html?id=${id}">
       <h3 class="item-title">${title}</h3>
       </a>
-      <a href="/pages/profile.html?seller=${seller.name}"><p>By ${seller.name}</p></a>
+      <a href="/pages/profile.html?profile=${seller.name}"><p>By ${seller.name}</p></a>
       <p class="item-description">${shorterDescription}</p>
       <p class="bids-amount">${_count.bids} bids,  going at ${highestBid}</p>
       <p>Bidding ends the ${endDate} at ${endTime}</p>
@@ -164,7 +168,7 @@ export function featuredListing(domElement, listingsArray) {
         </div>
         `;
 
-  domElement.style.backgroundImage = `url(${media})`;
+  domElement.style.backgroundImage = `url(${media[0].url})`;
 }
 
 /**
@@ -180,9 +184,12 @@ export function sortArray(domElement, listingsArray, sortBy) {
       printFeed(domElement, listingsArray);
       break;
     case "newest-bids":
+      console.log(listingsArray);
       printFeed(domElement, listingsArray);
+      break;
     case "oldest-bids":
       printFeed(domElement, listingsArray);
+      break;
     case "highest-price":
       let arrayWithBidsAndID = [];
       for (let i = 0; i < listingsArray.length; i++) {
@@ -313,24 +320,24 @@ export function singlePostContent(domElement, listingData) {
   if (bids >= 0) {
     domElement.innerHTML = `
     <div class="listing">
-    <img src="${media}" alt="${description}">
+    <img src="${media[0].url}" alt="${media[0].alt}>
         <h1>${title}</h1>
         <p class="description">${description}</p>
         <p class="description bid-amount">Be the first to place a bid!</p>
         <p class="description">Bidding ends the ${endDate} at ${endTime}</p>
 
-        <p>Posted the ${formattedDate} by <a href="/pages/profile.html?${seller.name}">${seller.name}</a></p>
+        <p>Posted the ${formattedDate} by <a href="/pages/profile.html?profile=${seller.name}">${seller.name}</a></p>
     </div>
     `;
   } else {
     domElement.innerHTML = `
     <div class="listing">
-    <img src="${media}" alt="${description}">
+    <img src="${media[0].url}" alt="${media[0].alt}">
         <h1>${title}</h1>
         <p class="description">${description}</p>
         <p class="description bid-amount">Currently going at <span class="highest-bid">${highestBid.amount}</span></p>
         <p class="description">Bidding ends the ${endDate} at ${endTime}</p>
-        <p>Posted the ${formattedDate} by <a href="/pages/profile.html?${seller.name}">${seller.name}</a></p>
+        <p>Posted the ${formattedDate} by <a href="/pages/profile.html?profile=${seller.name}">${seller.name}</a></p>
     </div>
     `;
   }
@@ -341,4 +348,30 @@ export function singlePostContent(domElement, listingData) {
             <button class="delete" id="${id}">delete post</button><button class="edit">edit post</button>
         </div>`;
   }
+}
+
+export function makeUserProfile(domElement, profileInfo) {
+  console.log(profileInfo);
+  // const {
+  //   banner = "",
+  //   avatar = {
+  //     url: "/src/image-resources/user.png",
+  //     alt: "placeholder image",
+  //   },
+  //   email,
+  //   name = "Unknown user",
+  //   bio = "",
+  // } = profileInfo;
+
+  // domElement.innerHTML = `
+  // <div class="user-banner" style="background-image: url(${banner})"></div>
+  //       <div class="user-summary">
+  //         <div><img class="user-avatar"src="${avatar}"></div>
+  //         <div class="user-text">
+  //           <h1>${name}</h1>
+  //           <p>${bio}</p>
+  //           <a href="email:${email}"<p>${email}</p></a>
+  //         </div>
+  //       </div>
+  // `;
 }

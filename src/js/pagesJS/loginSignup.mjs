@@ -2,6 +2,7 @@ import * as loginEffects from "../visual-effects/loginEffects.mjs";
 import * as formValidation from "../visual-effects/formValidation.mjs";
 import * as postActions from "../api-functions/post/postActions.mjs";
 import * as formActions from "../formActions/submitForms.mjs";
+import * as postData from "../api-functions/post/postData.mjs";
 
 const fieldset1 = document.querySelector(".first-form").elements;
 const btn1 = document.querySelector("#sign-in-btn");
@@ -34,7 +35,7 @@ const signupForm = document.querySelector(".signin-form");
 const signupBtn = document.querySelector("#sign-up-btn");
 const errorDivSignup = document.querySelector(".error-box-signup");
 
-const baseUrl = "https://api.noroff.dev/api/v1";
+const baseUrl = "https://v2.api.noroff.dev";
 let endpoint;
 let completeUrl;
 
@@ -47,7 +48,7 @@ let completeUrl;
 
 loginBtn.onclick = (e) => {
   e.preventDefault();
-  endpoint = "/social/auth/login";
+  endpoint = "/auth/login";
   completeUrl = `${baseUrl}${endpoint}`;
   formActions.submitForm(
     loginForm,
@@ -55,11 +56,14 @@ loginBtn.onclick = (e) => {
     postActions.login,
     errorDivLogin
   );
+  setTimeout(() => {
+    postData.createAPIKey();
+  }, 1000);
 };
 
 signupBtn.onclick = (e) => {
   e.preventDefault();
-  endpoint = "/social/auth/register";
+  endpoint = "/auth/register";
   completeUrl = `${baseUrl}${endpoint}`;
   formActions.submitForm(
     signupForm,

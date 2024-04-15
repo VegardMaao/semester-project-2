@@ -7,6 +7,7 @@
 @use "./components/forms";
 @use "./components/animations";
 @use "./components/listings";
+@use "./components/profile";
 
 body {
   background-color: map-get($map: variables.$colors, $key: offwhite);

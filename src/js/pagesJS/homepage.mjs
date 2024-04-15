@@ -2,7 +2,7 @@ import * as getActions from "../api-functions/get/getActions.mjs";
 import * as getData from "../api-functions/get/getData.mjs";
 
 const featuredSection = document.querySelector(".featured-section");
-const baseUrl = "https://api.noroff.dev/api/v1";
+const baseUrl = "https://v2.api.noroff.dev";
 let endpoint;
 let completeUrl;
 

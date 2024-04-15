@@ -9,7 +9,7 @@ const searchInp = document.querySelector("#site-search");
 const searchBy = document.querySelector("#search-keys");
 const sortingInp = document.querySelector("#sort-by");
 const showInactivePosts = document.querySelector("#show-inactive");
-const baseUrl = "https://api.noroff.dev/api/v1";
+const baseUrl = "https://v2.api.noroff.dev";
 let endpoint;
 let completeUrl;
 
@@ -41,7 +41,6 @@ showInactivePosts.addEventListener("change", (e) => {
 
 sortingInp.addEventListener("change", (e) => {
   allListingsDOM.innerHTML = "";
-
   switch (sortingInp.value) {
     case "default":
       completeUrl = `${baseUrl}${endpoint}`;

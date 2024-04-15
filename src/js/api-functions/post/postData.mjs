@@ -32,19 +32,38 @@ export async function postData(
   try {
     const fetchResponse = await fetch(url, dataForPostRequest);
     const finishedResponse = await fetchResponse.json();
-    if (finishedResponse.statusCode > 399) {
+    if (finishedResponse.data.statusCode > 399) {
       error = finishedResponse.errors[0].message;
       throw error;
     }
-    if (finishedResponse.accessToken) {
-      localStorage.setItem(`accessToken`, `${finishedResponse.accessToken}`);
-      localStorage.setItem("userName", `${finishedResponse.name}`);
+    if (finishedResponse.data.accessToken) {
+      localStorage.setItem(
+        `accessToken`,
+        `${finishedResponse.data.accessToken}`
+      );
+      localStorage.setItem("userName", `${finishedResponse.data.name}`);
     }
-    if (action) {
-      action(actionParam);
-    }
+    // if (action) {
+    //   action(actionParam);
+    // }
     return finishedResponse;
   } catch (error) {
     errorMsg(divForError, error);
   }
+}
+
+export async function createAPIKey() {
+  const token = localStorage.getItem("accessToken");
+  const createKeyURL = "https://v2.api.noroff.dev/auth/create-api-key";
+  const dataForPostRequest = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  console.log(dataForPostRequest);
+  const fetchResponse = await fetch(createKeyURL, dataForPostRequest);
+  const finishedResponse = await fetchResponse.json();
+  console.log(finishedResponse);
 }

@@ -11,16 +11,18 @@ const bidInput = document.querySelector("#bidamount");
 const placeBidBtn = document.querySelector(".submit");
 const errorDiv = document.querySelector(".error-msg");
 const userName = localStorage.getItem("userName");
-const baseUrl = "https://api.noroff.dev/api/v1";
+const baseUrl = "https://v2.api.noroff.dev";
 let endpoint = `/auction/listings/${id}?_seller=true&_bids=true`;
 let completeUrl = baseUrl + endpoint;
 
 getData.getData(completeUrl, singleListingDiv, getActions.singlePostContent);
 
-if (!userName) {
-  placeBidBtn.disabled = true;
-  errorDiv.innerHTML = `<a href="/pages/login.html"><p>Log in to place bid</p></a>`;
-}
+// NEEDS REWORKING; API Key is not finished yet and I need to check for that too
+// // if (!userName) {
+// //   placeBidBtn.disabled = true;
+// //   errorDiv.innerHTML = `<a href="/pages/login.html"><p>Log in to place bid</p></a>`;
+// // }
+// NEEDS REWORKING; API Key is not finished yet and I need to check for that too
 
 placeBidForm.addEventListener("submit", (e) => {
   e.preventDefault();
