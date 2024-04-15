@@ -26,7 +26,7 @@ export function printFeed(domElement, listingsArray) {
       bids,
       seller,
     } = listingsArray[i];
-    const highestBid = bids[bids.length - 1];
+
     const endsDate = endsAt.replaceAll("-", ".");
     const slicedEndsDateAndTime = endsDate
       .slice(0, endsDate.length - 4)
@@ -36,8 +36,7 @@ export function printFeed(domElement, listingsArray) {
     if (description) {
       shorterDescription = description.substring(0, 50);
     }
-
-    if (highestBid >= 0) {
+    if (bids.length === 0) {
       domElement.innerHTML += `
       <div class="single-listing">
       <a href="/pages/single-listing.html?id=${id}"><img
@@ -61,6 +60,7 @@ export function printFeed(domElement, listingsArray) {
     </div>
             `;
     } else {
+      const highestBid = bids[bids.length - 1].amount;
       domElement.innerHTML += `
       <div class="single-listing">
       <a href="/pages/single-listing.html?id=${id}"><img
@@ -73,7 +73,7 @@ export function printFeed(domElement, listingsArray) {
       </a>
       <a href="/pages/profile.html?seller=${seller.name}"><p>By ${seller.name}</p></a>
       <p class="item-description">${shorterDescription}</p>
-      <p class="bids-amount">${_count.bids} bids,  going at ${highestBid.amount}</p>
+      <p class="bids-amount">${_count.bids} bids,  going at ${highestBid}</p>
       <p>Bidding ends the ${endDate} at ${endTime}</p>
       </div>
 
