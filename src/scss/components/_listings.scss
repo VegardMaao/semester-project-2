@@ -80,6 +80,7 @@ section {
 
 .single-listing {
   margin-top: 100px;
+  width: 75vw;
 
   .listing {
     display: flex;
@@ -89,7 +90,13 @@ section {
     align-content: center;
 
     img {
-      max-width: 100vw;
+      max-width: 100%;
+      height: 350px;
+    }
+
+    .description {
+      max-width: 80%;
+      text-align: center;
     }
   }
 }

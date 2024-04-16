@@ -52,7 +52,7 @@ export function printFeed(domElement, listingsArray) {
       <h3 class="item-title">${title}</h3>
       </a>
       <a href="/pages/profile.html?profile=${seller.name}"><p>By ${seller.name}</p></a>
-      <p class="item-description">${description}</p>
+      <p class="item-description">${shorterDescription}</p>
       <p class="bids-amount">${_count.bids} bids, be the first to bid!</p>
       <p>Bidding ends the ${endDate} at ${endTime}</p>
       </div>
@@ -319,7 +319,7 @@ export function singlePostContent(domElement, listingData) {
   if (bids >= 0) {
     domElement.innerHTML = `
     <div class="listing">
-    <img src="${media[0].url}" alt="${media[0].alt}>
+    <img src="${media[0].url}" alt="${media[0].alt}">
         <h1>${title}</h1>
         <p class="description">${description}</p>
         <p class="description bid-amount">Be the first to place a bid!</p>

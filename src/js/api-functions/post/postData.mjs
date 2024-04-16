@@ -61,9 +61,16 @@ export async function createAPIKey() {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
+    body: JSON.stringify({
+      name: "My API Key",
+    }),
   };
   console.log(dataForPostRequest);
   const fetchResponse = await fetch(createKeyURL, dataForPostRequest);
   const finishedResponse = await fetchResponse.json();
   console.log(finishedResponse);
+  // Not sure what to do with the API Key, saving it to localstorage seems unsafe
+  // And if it's in a gitIgnored .env file, I don't see the app working on Netlify (for example)
+  // Besides, the function to get my API Key is public facing, so I don't know what the solution would be
+  // I'll finish for now and get back to  it later
 }

@@ -1,6 +1,7 @@
 import * as headerFunctions from "./components/navigation.mjs";
 import * as navigationFunctions from "./visual-effects/navigationEffects.mjs";
 import * as navigationObjects from "./objects/navItems.mjs";
+import { logout } from "./api-functions/logout/logout.mjs";
 
 const logoBanner = document.querySelector(".logo_banner");
 headerFunctions.makeLogoBanner(logoBanner);
@@ -24,3 +25,17 @@ headerFunctions.createNavigation(
   footerTextContainer,
   navigationObjects.footerText,
 );
+
+const logoutObserver = new MutationObserver(function (mutations) {
+  mutations.forEach(function () {
+    const navList = document.querySelector(".nav_ul");
+    console.dir(navList);
+    const logOutBtn = navList.lastChild;
+    logOutBtn.addEventListener("click", () => {
+      logout();
+    });
+  });
+});
+
+const config = { attributes: true, childList: true, subtree: true };
+logoutObserver.observe(navContainer, config);
