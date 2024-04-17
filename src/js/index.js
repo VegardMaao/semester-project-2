@@ -1,6 +1,7 @@
 import * as headerFunctions from "./components/navigation.mjs";
 import * as navigationFunctions from "./visual-effects/navigationEffects.mjs";
 import * as navigationObjects from "./objects/navItems.mjs";
+import * as setFormMinDate from "./visual-effects/setFormMinDate.mjs";
 import { logout } from "./api-functions/logout/logout.mjs";
 
 const logoBanner = document.querySelector(".logo_banner");
@@ -25,6 +26,9 @@ headerFunctions.createNavigation(
   footerTextContainer,
   navigationObjects.footerText,
 );
+
+const formDate = document.querySelector("#ends-at");
+setFormMinDate.setFormMinDate(formDate);
 
 const logoutObserver = new MutationObserver(function (mutations) {
   mutations.forEach(function () {

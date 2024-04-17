@@ -395,6 +395,9 @@ export function makeUserProfileSummary(domElement, profileInfo) {
 
 export function makeUserListings(listingDomElement, profileInfo) {
   const { listings } = profileInfo;
+  if (listings.length === 0) {
+    listingDomElement.innerHTML = "<p>User has not made any listings yet</p>";
+  }
   for (let i = 0; i < listings.length; i++) {
     const { id, description, endsAt, media, tags, title } = listings[i];
     const endsDate = endsAt.replaceAll("-", ".");

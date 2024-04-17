@@ -36,6 +36,37 @@
         </p>
         <a href="./pages/all-listings.html" class="cta-btn">See all listings</a>
       </section>
+
+      <section>
+        <div class="plus-icon"><i class="fas fa-plus"></i></div>
+        <div>
+          <form action="#" class="add-new-listing">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" required />
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description" />
+            <fieldset class="media">
+              <legend>
+                <label for="img">Link to your image</label>
+                <input type="text" name="img" id="img-url" />
+                <label for="alt">Image alt tekst</label>
+                <input type="text" name="alt" id="alt" />
+              </legend>
+            </fieldset>
+            <label for="tags">Tags</label>
+            <input type="text" name="tags" id="tags" />
+            <label for="endsAt">Bidding will end at</label>
+            <input
+              type="datetime-local"
+              value=""
+              min=""
+              max="2036-12-30T00:00"
+              name="endsAt"
+              id="ends-at"
+            />
+          </form>
+        </div>
+      </section>
     </main>
     <footer>
       <ul class="footer-text-ul"></ul>

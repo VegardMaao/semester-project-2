@@ -135,3 +135,15 @@ button {
     color: map-get($map: variables.$colors, $key: deepblue);
   }
 }
+
+.plus-icon {
+  border: 2px solid map-get($map: variables.$colors, $key: deepblue);
+  background-color: map-get($map: variables.$colors, $key: nicegreen);
+  padding: 10px;
+  border-radius: 100%;
+
+  i {
+    font-size: 3rem;
+    color: map-get($map: variables.$colors, $key: deepblue);
+  }
+}
