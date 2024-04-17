@@ -56,9 +56,6 @@ loginBtn.onclick = (e) => {
     postActions.login,
     errorDivLogin
   );
-  setTimeout(() => {
-    fetch(postData.createAPIKey());
-  }, 1000);
 };
 
 signupBtn.onclick = (e) => {

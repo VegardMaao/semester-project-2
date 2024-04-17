@@ -43,9 +43,9 @@ export async function postData(
       );
       localStorage.setItem("userName", `${finishedResponse.data.name}`);
     }
-    // if (action) {
-    //   action(actionParam);
-    // }
+    if (action) {
+      action(actionParam);
+    }
     return finishedResponse;
   } catch (error) {
     errorMsg(divForError, error);
@@ -65,10 +65,10 @@ export async function createAPIKey() {
       name: "My API Key",
     }),
   };
-  console.log(dataForPostRequest);
   const fetchResponse = await fetch(createKeyURL, dataForPostRequest);
   const finishedResponse = await fetchResponse.json();
   console.log(finishedResponse);
+  return finishedResponse.data;
   // Not sure what to do with the API Key, saving it to localstorage seems unsafe
   // And if it's in a gitIgnored .env file, I don't see the app working on Netlify (for example)
   // Besides, the function to get my API Key is public facing, so I don't know what the solution would be

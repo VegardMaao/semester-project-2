@@ -29,7 +29,9 @@ section {
   }
 }
 
-.all-listings {
+.all-listings,
+.user-listings,
+.user-wins {
   max-width: 750px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -118,7 +120,9 @@ section {
 }
 
 @media (width <= 1000px) {
-  .all-listings {
+  .all-listings,
+  .user-listings,
+  .user-wins {
     grid-template-columns: 1fr;
   }
 }

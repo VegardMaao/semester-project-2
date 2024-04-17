@@ -5,6 +5,15 @@ function goToPage(page) {
   window.location.href = [`${page}`];
 }
 
+const apiKey = {
+  data: {
+    name: "My API Key",
+    status: "ACTIVE",
+    key: "c57f1e08-71bf-4bea-8292-d1bc6abb1f29",
+  },
+  meta: {},
+};
+
 /**
  *
  * @param {string} url - where to send the data
@@ -16,6 +25,7 @@ function goToPage(page) {
 export function login(url, formData, divForError) {
   const headers = {
     "Content-Type": "application/json",
+    "X-Noroff-API-Key": apiKey.data.key,
   };
   const page = "/index.html";
   postData(url, formData, headers, divForError, goToPage, page);

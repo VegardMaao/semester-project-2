@@ -1,4 +1,13 @@
 const token = localStorage.getItem("accessToken");
+const apiKey = {
+  data: {
+    name: "My API Key",
+    status: "ACTIVE",
+    key: "c57f1e08-71bf-4bea-8292-d1bc6abb1f29",
+  },
+  meta: {},
+};
+
 /**
  *
  * @param {string} url - url for the fetch request
@@ -13,6 +22,7 @@ export async function getData(url, domElement, action, actionParam) {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
+      "X-Noroff-API-Key": apiKey.data.key,
     },
   };
 
