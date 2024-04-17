@@ -1,6 +1,6 @@
 {
   "name": "semester-project-2",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Semester Project 2 repo",
   "main": "src/index.js",
   "type": "module",
