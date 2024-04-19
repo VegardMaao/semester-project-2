@@ -396,6 +396,7 @@ export function makeUserProfileSummary(domElement, profileInfo) {
 export function makeUserListings(listingDomElement, profileInfo) {
   const { listings } = profileInfo;
   if (listings.length === 0) {
+    listingDomElement.style.cssText = "grid-template-columns: 1fr";
     listingDomElement.innerHTML = "<p>User has not made any listings yet</p>";
   }
   for (let i = 0; i < listings.length; i++) {
@@ -441,6 +442,7 @@ export function makeUserListings(listingDomElement, profileInfo) {
 export function makeUserWins(winsDomElement, profileInfo) {
   const { wins } = profileInfo;
   if (wins.length === 0) {
+    winsDomElement.style.cssText = "grid-template-columns: 1fr";
     winsDomElement.innerHTML = "<p>User has not won any bids yet</p>";
   }
   for (let i = 0; i < wins.length; i++) {

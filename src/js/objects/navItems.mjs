@@ -13,7 +13,7 @@ export const navItems = [
   },
   {
     title: "My listings and bids",
-    link: `/pages/profile.html#bids-and-listings?profile=${myUserName}`,
+    link: `/pages/profile.html?profile=${myUserName}#bids-and-listings`,
     target: "_self",
   },
   {

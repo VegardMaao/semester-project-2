@@ -85,3 +85,42 @@
     }
   }
 }
+
+.new-listing-section {
+  overflow-x: hidden;
+
+  .new-listing-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 700px;
+    position: fixed;
+    left: calc(100vw - 300px);
+    top: 50vh;
+
+    .add-new-listing-form {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      border: 2px solid map-get($map: variables.$colors, $key: deepblue);
+      border-radius: 25px;
+      padding: 25px;
+      background-color: map-get($map: variables.$colors, $key: offwhite);
+
+      fieldset {
+        border: none;
+        padding: 0px;
+        margin: 0px;
+
+        legend {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          margin: 0px;
+        }
+      }
+    }
+  }
+}

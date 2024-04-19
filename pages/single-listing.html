@@ -51,8 +51,42 @@
         </form>
         <div class="error-msg"></div>
       </section>
-    </main>
 
+      <section class="new-listing-section">
+        <div class="new-listing-container">
+          <div class="plus-icon"><i class="fas fa-plus"></i></div>
+          <div>
+            <form action="#" class="add-new-listing-form">
+              <span class="cross-icon"><i class="fas fa-times"></i></span>
+              <label for="title">Title:</label>
+              <input type="text" name="title" id="title" required />
+              <label for="description">Description</label>
+              <input type="text" name="description" id="description" />
+              <fieldset class="media">
+                <legend>
+                  <label for="img">Link to your image</label>
+                  <input type="text" name="img" id="img-url" />
+                  <label for="alt">Image alt tekst</label>
+                  <input type="text" name="alt" id="alt" />
+                </legend>
+              </fieldset>
+              <label for="tags">Tags</label>
+              <input type="text" name="tags" id="tags" />
+              <label for="endsAt">Bidding will end at</label>
+              <input
+                type="datetime-local"
+                value=""
+                min=""
+                max="2036-12-30T00:00"
+                name="endsAt"
+                id="ends-at"
+              />
+              <button class="submit-listing">Submit listing</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
     <footer>
       <ul class="footer-text-ul"></ul>
       <ul class="footer-icons-ul"></ul>
