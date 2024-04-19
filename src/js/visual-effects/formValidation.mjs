@@ -18,7 +18,6 @@ export function formCheck(inputs, btn) {
   for (let i = 0; i < inputs.length; i++) {
     const inputsValidity = inputs[i].validity.valid;
     let errorMsg = inputs[i].nextElementSibling;
-
     if (inputsValidity) {
       errorMsg.style.cssText = "display: none";
       inputs[i].classList.add("validated");

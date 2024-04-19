@@ -168,3 +168,13 @@ button {
   margin: 10px;
   padding: 10px;
 }
+
+.submit-listing:disabled {
+  background-color: gray;
+  border: gray;
+}
+
+.submit-listing:disabled:hover {
+  cursor: default;
+  color: map-get($map: variables.$colors, $key: offwhite);
+}

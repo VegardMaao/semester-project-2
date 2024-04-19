@@ -4,6 +4,7 @@ import * as navigationObjects from "./objects/navItems.mjs";
 import * as setFormMinDate from "./visual-effects/setFormMinDate.mjs";
 import * as moving from "./visual-effects/moveNewListingForm.mjs";
 import { logout } from "./api-functions/logout/logout.mjs";
+import { formCheck } from "./visual-effects/formValidation.mjs";
 
 const logoBanner = document.querySelector(".logo_banner");
 headerFunctions.makeLogoBanner(logoBanner);
@@ -34,7 +35,6 @@ setFormMinDate.setFormMinDate(formDate);
 const logoutObserver = new MutationObserver(function (mutations) {
   mutations.forEach(function () {
     const navList = document.querySelector(".nav_ul");
-    console.dir(navList);
     const logOutBtn = navList.lastChild;
     logOutBtn.addEventListener("click", () => {
       logout();
@@ -48,6 +48,10 @@ logoutObserver.observe(navContainer, config);
 const newListingContainer = document.querySelector(".new-listing-container");
 const plusIcon = document.querySelector(".plus-icon");
 const newListingForm = document.querySelector(".add-new-listing-form");
+const newListingFieldset = document.querySelector(
+  ".add-new-listing-fieldset",
+).elements;
+const submitBtn = document.querySelector(".submit-listing");
 const crossIcon = document.querySelector(".cross-icon");
 const token = localStorage.getItem("accessToken");
 
@@ -62,3 +66,8 @@ plusIcon.addEventListener("click", () => {
 crossIcon.addEventListener("click", () => {
   moving.swapSides(plusIcon, newListingForm);
 });
+
+for (let i = 0; i < newListingFieldset.length; i++) {
+  const input = newListingFieldset[i];
+  input.onkeyup = () => formCheck(newListingFieldset, submitBtn);
+}
