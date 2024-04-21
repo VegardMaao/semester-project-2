@@ -47,7 +47,7 @@ export function printFeed(domElement, listingsArray) {
       domElement.innerHTML += `
       <div class="single-listing">
       <a href="/pages/single-listing.html?id=${id}"><img
-      src="${media[0].url}"
+      src="${media[0].url || ""}"
     /></a>
 
     <div>
@@ -55,14 +55,14 @@ export function printFeed(domElement, listingsArray) {
       <h3 class="item-title">${title}</h3>
       </a>
       <a href="/pages/profile.html?profile=${seller.name}"><p>By ${seller.name}</p></a>
-      <p class="item-description">${shorterDescription}</p>
+      <p class="item-description">${shorterDescription || ""}</p>
       <p class="bids-amount">${_count.bids} bids, be the first to bid!</p>
       <p>Bidding ends the ${endDate} at ${endTime}</p>
       </div>
 
       <a class="goto-bid" href="/pages/single-listing.html?id=${id}"><p>Make a bid</p></a>
       <div>
-      <p>tags: ${tags}</p>
+      <p>tags: ${tags || ""}</p>
     </div>
     </div>
             `;
@@ -71,7 +71,7 @@ export function printFeed(domElement, listingsArray) {
       domElement.innerHTML += `
       <div class="single-listing">
       <a href="/pages/single-listing.html?id=${id}"><img
-      src="${media[0].url}"
+      src="${media[0].url || ""}"
     /></a>
 
     <div>
@@ -79,14 +79,14 @@ export function printFeed(domElement, listingsArray) {
       <h3 class="item-title">${title}</h3>
       </a>
       <a href="/pages/profile.html?profile=${seller.name}"><p>By ${seller.name}</p></a>
-      <p class="item-description">${shorterDescription}</p>
+      <p class="item-description">${shorterDescription || ""}</p>
       <p class="bids-amount">${_count.bids} bids,  going at ${highestBid}</p>
       <p>Bidding ends the ${endDate} at ${endTime}</p>
       </div>
 
       <a class="goto-bid" href="/pages/single-listing.html?id=${id}"><p>Make a bid</p></a>
       <div>
-      <p>tags: ${tags}</p>
+      <p>tags: ${tags || ""}</p>
     </div>
     </div>
             `;
@@ -163,7 +163,7 @@ export function featuredListing(domElement, listingsArray) {
               This is the featured listing right now!
             </p>
             <p>
-              ${description}
+              ${description || ""}
             </p>
             <p>Currently going at ${bidAmount}. Bidding ends the ${endDate} at ${endTime}</p>
             <a href="/pages/single-listing.html?id=${id}" class="cta-btn">Place a bid!</a>
@@ -302,8 +302,16 @@ export function searchArray(domElement, listingsArray, searchQuery) {
  * This function prints HTML to the single post DOM element
  */
 export function singlePostContent(domElement, listingData) {
-  const { title, description, media, created, endsAt, seller, _count, bids } =
-    listingData;
+  const {
+    title,
+    description = "default",
+    media,
+    created,
+    endsAt,
+    seller,
+    _count,
+    bids,
+  } = listingData;
   const creationDate = created.replaceAll("-", ".");
   const formattedDate = creationDate
     .slice(0, creationDate.length - 14)
@@ -322,9 +330,9 @@ export function singlePostContent(domElement, listingData) {
   if (bids >= 0) {
     domElement.innerHTML = `
     <div class="listing">
-    <img src="${media[0].url}" alt="${media[0].alt}">
+    <img src="${media[0].url || ""}" alt="${media[0].alt || ""}">
         <h1>${title}</h1>
-        <p class="description">${description}</p>
+        <p class="description">${description || ""}</p>
         <p class="description bid-amount">Be the first to place a bid!</p>
         <p class="description">Bidding ends the ${endDate} at ${endTime}</p>
 
@@ -334,9 +342,9 @@ export function singlePostContent(domElement, listingData) {
   } else {
     domElement.innerHTML = `
     <div class="listing">
-    <img src="${media[0].url}" alt="${media[0].alt}">
+    <img src="${media[0].url || ""}" alt="${media[0].alt || ""}">
         <h1>${title}</h1>
-        <p class="description">${description}</p>
+        <p class="description">${description || ""}</p>
         <p class="description bid-amount">Currently going at <span class="highest-bid">${highestBid.amount}</span></p>
         <p class="description">Bidding ends the ${endDate} at ${endTime}</p>
         <p>Posted the ${formattedDate} by <a href="/pages/profile.html?profile=${seller.name}">${seller.name}</a></p>
@@ -363,34 +371,21 @@ export function makeUserProfileSummary(domElement, profileInfo) {
       alt: "placeholder image",
     },
     email,
-    name = "Unknown user",
-    bio = "",
+    name,
+    bio,
   } = profileInfo;
 
-  if (!bio) {
-    domElement.innerHTML = `
-    <div class="user-banner" style="background-image: url(${banner.url})"></div>
-          <div class="user-summary">
-            <div><img class="user-avatar"src="${avatar.url}" alt="${avatar.alt}"></div>
-            <div class="user-text">
-              <h1>${name}</h1>
-              <a href="email:${email}"<p>${email}</p></a>
-            </div>
-          </div>
-    `;
-  } else {
-    domElement.innerHTML = `
+  domElement.innerHTML = `
     <div class="user-banner" style="background-image:url(${banner.url})"></div>
           <div class="user-summary">
             <div><img class="user-avatar"src="${avatar.url}" alt="${avatar.alt}"></div>
             <div class="user-text">
               <h1>${name}</h1>
-              <p>${bio}</p>
+              <p>${bio || ""}</p>
               <a href="email:${email}"<p>${email}</p></a>
             </div>
           </div>
     `;
-  }
 }
 
 export function makeUserListings(listingDomElement, profileInfo) {
@@ -421,17 +416,17 @@ export function makeUserListings(listingDomElement, profileInfo) {
     listingDomElement.innerHTML += `
       <div class="single-listing">
       <a href="/pages/single-listing.html?id=${id}"><img
-      src="${media[0].url}" alt="${media[0].alt}"
+      src="${media[0].url || ""}" alt="${media[0].alt || ""}"
     /></a>
 
     <div>
     <a href="/pages/single-listing.html?id=${id}">
       <h3 class="item-title">${title}</h3>
       </a>
-      <p class="item-description">${shorterDescription}</p>
+      <p class="item-description">${shorterDescription || ""}</p>
       <p>Bidding ends the ${endDate} at ${endTime}</p>
       </div>
-      <p>tags: ${tags}</p>
+      <p>tags: ${tags || ""}</p>
     </div>
     </div>
         
@@ -467,17 +462,17 @@ export function makeUserWins(winsDomElement, profileInfo) {
     winsDomElement.innerHTML += `
       <div class="single-listing">
       <a href="/pages/single-listing.html?id=${id}"><img
-      src="${media[0].url}" alt="${media[0].alt}"
+      src="${media[0].url || ""}" alt="${media[0].alt || ""}"
     /></a>
 
     <div>
     <a href="/pages/single-listing.html?id=${id}">
       <h3 class="item-title">${title}</h3>
       </a>
-      <p class="item-description">${shorterDescription}</p>
+      <p class="item-description">${shorterDescription || ""}</p>
       <p>Bidding ends the ${endDate} at ${endTime}</p>
       </div>
-      <p>tags: ${tags}</p>
+      <p>tags: ${tags || ""}</p>
     </div>
     </div>
       `;
