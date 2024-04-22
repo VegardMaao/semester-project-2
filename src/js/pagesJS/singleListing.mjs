@@ -3,6 +3,7 @@ import * as getData from "../api-functions/get/getData.mjs";
 import * as postActions from "../api-functions/post/postActions.mjs";
 import { deleteListingObserver } from "../observers/deleteListingObserver.mjs";
 import { listingObserver } from "../observers/bidAmountObserver.mjs";
+import { editListingObserver } from "../observers/editListingObserver.mjs";
 
 const queryString = document.location.search;
 const parameter = new URLSearchParams(queryString);
@@ -29,3 +30,4 @@ placeBidForm.addEventListener("submit", (e) => {
 const config = { attributes: true, childList: true, subtree: true };
 listingObserver.observe(singleListingDiv, config);
 deleteListingObserver.observe(singleListingDiv, config);
+editListingObserver.observe(singleListingDiv, config);
