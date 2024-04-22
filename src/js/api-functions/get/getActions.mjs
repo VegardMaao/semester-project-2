@@ -302,6 +302,12 @@ export function searchArray(domElement, listingsArray, searchQuery) {
  * This function prints HTML to the single post DOM element
  */
 export function singlePostContent(domElement, listingData) {
+  if (!listingData) {
+    domElement.innerHTML = `<h1>Page does not exist<h1>`;
+    const makeBidDom = document.querySelector(".make-a-bid");
+    makeBidDom.style.cssText = "display:none;";
+  }
+
   const {
     id,
     title,
@@ -318,6 +324,7 @@ export function singlePostContent(domElement, listingData) {
     _count,
     bids,
   } = listingData;
+
   const creationDate = created.replaceAll("-", ".");
   const formattedDate = creationDate
     .slice(0, creationDate.length - 14)
