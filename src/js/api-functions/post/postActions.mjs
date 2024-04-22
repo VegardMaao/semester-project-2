@@ -14,6 +14,8 @@ const apiKey = {
   meta: {},
 };
 
+const token = localStorage.getItem("accessToken");
+
 /**
  *
  * @param {string} url - where to send the data
@@ -63,7 +65,6 @@ export function signup(url, formData, divForError, mainDOMElement) {
  * This function passes information about the post you want to create down to the postData function
  */
 export function makePost(url, formData, divForError) {
-  const token = localStorage.getItem("accessToken");
   const headerData = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
@@ -84,4 +85,13 @@ export function placeBid(url, amount, divForError) {
     Authorization: `Bearer ${token}`,
   };
   postData(url, amount, headerData, divForError);
+}
+
+export function createNewListing(url, formData) {
+  const headerData = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+    "X-Noroff-API-Key": apiKey.data.key,
+  };
+  postData(url, formData, headerData);
 }

@@ -303,9 +303,15 @@ export function searchArray(domElement, listingsArray, searchQuery) {
  */
 export function singlePostContent(domElement, listingData) {
   const {
+    id,
     title,
     description = "default",
-    media,
+    media = [
+      {
+        url: "https://cannons.com/wp-content/uploads/2013/09/Talk-Like-a-Pirate-Day-at-Cannons-Marina-925x1024.jpg",
+        alt: "",
+      },
+    ],
     created,
     endsAt,
     seller,
@@ -326,6 +332,10 @@ export function singlePostContent(domElement, listingData) {
     .split("T");
   const endDate = slicedEndsDateAndTime[0].split(".").reverse().join(".");
   const endTime = slicedEndsDateAndTime[1].replaceAll(".", "");
+
+  if (!media.length) {
+    media.push(" ");
+  }
 
   if (bids >= 0) {
     domElement.innerHTML = `
@@ -354,8 +364,8 @@ export function singlePostContent(domElement, listingData) {
 
   if (seller.name === myUserName) {
     domElement.innerHTML += `
-        <div >
-            <button class="delete" id="${id}">delete post</button><button class="edit">edit post</button>
+        <div class="listing">
+            <button class="delete" id="${id}">delete listing</button><button class="edit">edit listing</button>
         </div>`;
   }
 }

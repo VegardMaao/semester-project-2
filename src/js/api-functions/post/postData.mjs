@@ -29,6 +29,8 @@ export async function postData(
     headers: headerData,
     body: JSON.stringify(formData),
   };
+  console.log(dataForPostRequest);
+  console.log(formData);
   try {
     const fetchResponse = await fetch(url, dataForPostRequest);
     const finishedResponse = await fetchResponse.json();
