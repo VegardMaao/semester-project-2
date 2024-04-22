@@ -42,7 +42,7 @@ export function makeLogoBanner(container) {
             class="header_logo"
         /></a>
 
-        <span></span>
+        <p class="users-credits"></p>
         <label for="hamburger_menu" class="menubox"
           ><i class="fas fa-bars" id="menu_icon"></i
         ></label>

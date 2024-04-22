@@ -3,7 +3,8 @@ import * as navigationFunctions from "./visual-effects/navigationEffects.mjs";
 import * as navigationObjects from "./objects/navItems.mjs";
 import * as setFormMinDate from "./visual-effects/setFormMinDate.mjs";
 import * as moving from "./visual-effects/moveNewListingForm.mjs";
-import { logout } from "./api-functions/logout/logout.mjs";
+import { logoutObserver } from "./observers/logOutObserver.mjs";
+import { userCreditAmount } from "./observers/userCreditAmount.mjs";
 import { formCheck } from "./visual-effects/formValidation.mjs";
 
 const logoBanner = document.querySelector(".logo_banner");
@@ -32,18 +33,9 @@ headerFunctions.createNavigation(
 const formDate = document.querySelector("#ends-at");
 setFormMinDate.setFormMinDate(formDate);
 
-const logoutObserver = new MutationObserver(function (mutations) {
-  mutations.forEach(function () {
-    const navList = document.querySelector(".nav_ul");
-    const logOutBtn = navList.lastChild;
-    logOutBtn.addEventListener("click", () => {
-      logout();
-    });
-  });
-});
-
 const config = { attributes: true, childList: true, subtree: true };
 logoutObserver.observe(navContainer, config);
+userCreditAmount.observe(logoBanner, config);
 
 const newListingContainer = document.querySelector(".new-listing-container");
 const plusIcon = document.querySelector(".plus-icon");

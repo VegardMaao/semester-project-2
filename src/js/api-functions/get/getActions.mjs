@@ -478,3 +478,8 @@ export function makeUserWins(winsDomElement, profileInfo) {
       `;
   }
 }
+
+export function getUserCredits(domElement, userInfo) {
+  const { credits } = userInfo;
+  domElement.innerHTML = `${credits} credits`;
+}
