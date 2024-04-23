@@ -29,8 +29,7 @@ export async function postData(
     headers: headerData,
     body: JSON.stringify(formData),
   };
-  console.log(dataForPostRequest);
-  console.log(formData);
+
   try {
     const fetchResponse = await fetch(url, dataForPostRequest);
     const finishedResponse = await fetchResponse.json();
@@ -69,7 +68,6 @@ export async function createAPIKey() {
   };
   const fetchResponse = await fetch(createKeyURL, dataForPostRequest);
   const finishedResponse = await fetchResponse.json();
-  console.log(finishedResponse);
   return finishedResponse.data;
   // Not sure what to do with the API Key, saving it to localstorage seems unsafe
   // And if it's in a gitIgnored .env file, I don't see the app working on Netlify (for example)
