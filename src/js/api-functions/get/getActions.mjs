@@ -187,7 +187,6 @@ export function sortArray(domElement, listingsArray, sortBy) {
       printFeed(domElement, listingsArray);
       break;
     case "newest-bids":
-      console.log(listingsArray);
       printFeed(domElement, listingsArray);
       break;
     case "oldest-bids":

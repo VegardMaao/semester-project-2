@@ -73,6 +73,67 @@
         <div class="error-box-login"></div>
       </section>
 
+      <section class="signup-secton">
+        <form action="submit" class="signin-form">
+          <fieldset class="form-to-validate second-form">
+            <div>
+              <h2>Sign up for Noroff Social Media</h2>
+              <label for="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                id="name"
+                aria-describeby="usernameHelp"
+                minlength="2"
+                placeholder="Username"
+                required
+              />
+              <p class="invalid-feedback">
+                Enter a username, minimum 2 characters
+              </p>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                id="email"
+                aria-describeby="usernameHelp"
+                pattern="[a-zA-Z0-9]+@(stud.noroff.no)+$"
+                placeholder="your@email.com"
+                required
+              />
+              <p class="invalid-feedback">Enter a valid Noroff email address</p>
+            </div>
+            <div>
+              <label for="signup-InputPassword">Password</label>
+              <input
+                type="password"
+                name="password"
+                class="form-control mb-3"
+                id="signup-InputPassword"
+                placeholder="Password"
+                minlength="8"
+                required
+              />
+              <p class="invalid-feedback">
+                Password must be minimum 8 characters
+              </p>
+            </div>
+          </fieldset>
+          <button id="sign-up-btn" class="sign-up" type="submit" disabled>
+            Sign up
+          </button>
+        </form>
+        <button class="show-signup-form-button">
+          Do you have an account? Log in!
+          <i class="fas fa-arrow-up"></i>
+        </button>
+        <div class="error-box-signup"></div>
+      </section>
+
       <section class="new-listing-section">
         <div class="new-listing-container">
           <div class="plus-icon"><i class="fas fa-plus"></i></div>

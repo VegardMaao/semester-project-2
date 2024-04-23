@@ -12,21 +12,24 @@
 export function submitForm(form, url, action, divForError, currentPage) {
   const formData = new FormData(form);
   const formdataOBj = {};
-  const mediaURLs = formData.getAll("media.url");
-  const mediaAlts = formData.getAll("media.alt");
-  const media = mediaURLs.map((url, i) => ({ url, alt: mediaAlts.at(i) }));
-  const tags = formData.getAll("tags");
-  formData.forEach((value, key) => (formdataOBj[key] = value));
-  delete formdataOBj["media.url"];
-  delete formdataOBj["media.alt"];
-  delete formdataOBj["tags"];
-  if (media[0].url.length) {
-    formdataOBj.media = [media[0]];
+  if (url === "https://v2.api.noroff.dev/auction/listings") {
+    const mediaURLs = formData.getAll("media.url");
+    const mediaAlts = formData.getAll("media.alt");
+    const media = mediaURLs.map((url, i) => ({ url, alt: mediaAlts.at(i) }));
+    const tags = formData.getAll("tags");
+    formData.forEach((value, key) => (formdataOBj[key] = value));
+    delete formdataOBj["media.url"];
+    delete formdataOBj["media.alt"];
+    delete formdataOBj["tags"];
+    if (media[0].url.length) {
+      formdataOBj.media = [media[0]];
+    } else {
+      delete formdataOBj.media;
+    }
+    const strTags = new String(tags);
+    formdataOBj.tags = strTags.split(",");
   } else {
-    delete formdataOBj.media;
+    formData.forEach((value, key) => (formdataOBj[key] = value));
   }
-  const strTags = new String(tags);
-  formdataOBj.tags = strTags.split(",");
-
   action(url, formdataOBj, divForError, currentPage);
 }
