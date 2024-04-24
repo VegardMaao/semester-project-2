@@ -59,6 +59,6 @@ export function characterCount(
   if (inpLength < minVal || inpLength >= maxLength) {
     counter.style.cssText = "color: red;";
   } else {
-    counter.style.cssText = "color: #fff;";
+    counter.style.cssText = "color: #1d3557;";
   }
 }

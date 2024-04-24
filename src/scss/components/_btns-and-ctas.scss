@@ -115,6 +115,7 @@ button {
 .submit,
 .submit-listing,
 .submit-edit,
+.update-profile-btn,
 .delete,
 .edit {
   border: 2px solid map-get($map: variables.$colors, $key: deepblue);
@@ -131,6 +132,7 @@ button {
 }
 
 .show-signup-form-button:hover,
+.update-profile-btn:hover,
 .goto-bid:hover,
 .submit:hover,
 .submit-listing:hover,
@@ -160,7 +162,9 @@ button {
   }
 }
 
-.cross-icon {
+.cross-icon,
+.cross-icon-edit,
+.cross-icon-profile-editor {
   padding: 2px;
   width: fit-content;
   height: fit-content;
@@ -174,6 +178,7 @@ button {
 .submit,
 .submit-listing,
 .submit-edit,
+.update-profile-btn,
 .delete,
 .edit {
   font-size: 1rem;
@@ -183,14 +188,16 @@ button {
 
 .submit:disabled,
 .submit-listing:disabled,
-.submit-edit:disabled {
+.submit-edit:disabled,
+.update-profile-btn:disabled {
   background-color: gray;
   border: gray;
 }
 
 .submit:disabled:hover,
 .submit-listing:disabled:hover,
-.submit-edit:disabled:hover {
+.submit-edit:disabled:hover,
+.update-profile-btn:disabled:hover {
   cursor: default;
   color: map-get($map: variables.$colors, $key: offwhite);
 }
@@ -202,4 +209,14 @@ button {
 .delete,
 .edit {
   margin: 10px;
+}
+
+.edit-profile-div {
+  display: flex;
+  justify-content: center;
+  .edit-profile-btn {
+    i {
+      font-size: 1.5rem;
+    }
+  }
 }

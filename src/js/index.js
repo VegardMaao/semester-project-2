@@ -5,6 +5,7 @@ import * as setFormMinDate from "./visual-effects/setFormMinDate.mjs";
 import * as moving from "./visual-effects/moveNewListingForm.mjs";
 import * as postActions from "./api-functions/post/postActions.mjs";
 import { submitForm } from "./formActions/submitForms.mjs";
+import { config } from "./observers/config/config.mjs";
 import { logoutObserver } from "./observers/logOutObserver.mjs";
 import { userCreditAmount } from "./observers/userCreditAmount.mjs";
 import { formCheck } from "./visual-effects/formValidation.mjs";
@@ -39,7 +40,6 @@ let completeUrl;
 const formDate = document.querySelector("#ends-at");
 setFormMinDate.setFormMinDate(formDate);
 
-const config = { attributes: true, childList: true, subtree: true };
 logoutObserver.observe(navContainer, config);
 userCreditAmount.observe(logoBanner, config);
 

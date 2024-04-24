@@ -4,6 +4,7 @@ import * as postActions from "../api-functions/post/postActions.mjs";
 import { putData } from "../api-functions/put/putData.mjs";
 import { formCheck } from "../visual-effects/formValidation.mjs";
 import { submitForm } from "../formActions/submitForms.mjs";
+import { config } from "../observers/config/config.mjs";
 import { deleteListingObserver } from "../observers/deleteListingObserver.mjs";
 import { listingObserver } from "../observers/bidAmountObserver.mjs";
 import { editListingObserver } from "../observers/editListingObserver.mjs";
@@ -70,7 +71,6 @@ cancelEdit.addEventListener("click", () => {
   editFormDiv.style.cssText = "display: none;";
 });
 
-const config = { attributes: true, childList: true, subtree: true };
 listingObserver.observe(singleListingDiv, config);
 deleteListingObserver.observe(singleListingDiv, config);
 editListingObserver.observe(singleListingDiv, config);

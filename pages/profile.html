@@ -39,6 +39,52 @@
 
     <main>
       <section class="user-info"></section>
+      <section class="update-profile">
+        <form action="#" class="update-profile-form">
+          <span class="cross-icon-profile-editor"
+            ><i class="fas fa-times"></i
+          ></span>
+          <fieldset class="update-profile-fieldset">
+            <label for="bio"
+              >Update bio: <span class="counter">0</span> /
+              <span class="max-val">250</span></label
+            >
+            <textarea
+              name="bio"
+              id="bio-text-area"
+              bio
+              cols="30"
+              rows="10"
+              placeholder="Minimum 10 characters"
+              required
+            ></textarea>
+            <p class="invalid-feedback"></p>
+            <label for="avatar.url">Update your profile picuture</label>
+            <input
+              type="text"
+              name="avatar.url"
+              id="avatar-url"
+              placeholder="Link to your image"
+            />
+            <p class="invalid-feedback"></p>
+            <label for="avatar.alt">Avatar alt text</label>
+            <input type="text" name="avatar.alt" id="avatar-alt" />
+            <p class="invalid-feedback"></p>
+            <label for="banner.url">Update your profile banner</label>
+            <input
+              type="text"
+              name="banner.url"
+              id="banner-url"
+              placeholder="Link to your image"
+            />
+            <p class="invalid-feedback"></p>
+            <label for="banner.alt">Banner alt text</label>
+            <input type="text" name="banner.alt" id="banner-alt" />
+            <p class="invalid-feedback"></p>
+          </fieldset>
+          <button class="update-profile-btn" disabled>Save changes</button>
+        </form>
+      </section>
 
       <section class="user-wins-and-listings" id="bids-and-listings">
         <div>

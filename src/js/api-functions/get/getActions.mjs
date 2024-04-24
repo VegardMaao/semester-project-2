@@ -411,6 +411,17 @@ export function makeUserProfileSummary(domElement, profileInfo) {
             </div>
           </div>
     `;
+
+  if (name === myUserName) {
+    domElement.insertAdjacentHTML(
+      "afterend",
+      `
+      <div class="edit-profile-div">
+      <p class="edit-profile-btn">Edit profile <i class="far fa-edit"></i></p>
+      </div>      
+      `
+    );
+  }
 }
 
 export function makeUserListings(listingDomElement, profileInfo) {

@@ -2,7 +2,6 @@ import * as loginEffects from "../visual-effects/loginEffects.mjs";
 import * as formValidation from "../visual-effects/formValidation.mjs";
 import * as postActions from "../api-functions/post/postActions.mjs";
 import * as formActions from "../formActions/submitForms.mjs";
-import * as postData from "../api-functions/post/postData.mjs";
 
 const fieldset1 = document.querySelector(".first-form").elements;
 const btn1 = document.querySelector("#sign-in-btn");
