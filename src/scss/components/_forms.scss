@@ -104,3 +104,31 @@ input {
     }
   }
 }
+
+.edit-listing-container {
+  display: none;
+  margin: auto;
+}
+.edit-listing-container {
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 200px;
+
+  .edit-listing-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border: 2px solid map-get($map: variables.$colors, $key: deepblue);
+    border-radius: 25px;
+    padding: 25px;
+    background-color: map-get($map: variables.$colors, $key: offwhite);
+
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      border: none;
+    }
+  }
+}

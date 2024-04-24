@@ -12,7 +12,7 @@
 export function submitForm(form, url, action, divForError, currentPage) {
   const formData = new FormData(form);
   const formdataOBj = {};
-  if (url === "https://v2.api.noroff.dev/auction/listings") {
+  if (url.slice(0, 42) === "https://v2.api.noroff.dev/auction/listings") {
     const mediaURLs = formData.getAll("media.url");
     const mediaAlts = formData.getAll("media.alt");
     const media = mediaURLs.map((url, i) => ({ url, alt: mediaAlts.at(i) }));

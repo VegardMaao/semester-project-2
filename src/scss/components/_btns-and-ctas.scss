@@ -112,7 +112,8 @@ button {
 }
 
 .goto-bid,
-.submit-listing {
+.submit-listing,
+.submit-edit {
   border: 2px solid map-get($map: variables.$colors, $key: deepblue);
   text-align: center;
   text-decoration: none;
@@ -128,7 +129,8 @@ button {
 
 .show-signup-form-button:hover,
 .goto-bid:hover,
-.submit-listing:hover {
+.submit-listing:hover,
+.submit-edit:hover {
   background-color: map-get($map: variables.$colors, $key: offwhite);
   color: map-get($map: variables.$colors, $key: deepblue);
   cursor: pointer;
@@ -163,18 +165,21 @@ button {
   }
 }
 
-.submit-listing {
+.submit-listing,
+.submit-edit {
   font-size: 1rem;
   margin: 10px;
   padding: 10px;
 }
 
-.submit-listing:disabled {
+.submit-listing:disabled,
+.submit-edit:disabled {
   background-color: gray;
   border: gray;
 }
 
-.submit-listing:disabled:hover {
+.submit-listing:disabled:hover,
+.submit-edit:disabled:hover {
   cursor: default;
   color: map-get($map: variables.$colors, $key: offwhite);
 }

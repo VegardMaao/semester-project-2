@@ -17,11 +17,6 @@ export const navItems = [
     target: "_self",
   },
   {
-    title: "About",
-    link: "#",
-    target: "_self",
-  },
-  {
     title: "Log Out",
     link: "#",
     target: "_self",
@@ -29,11 +24,6 @@ export const navItems = [
 ];
 
 export const footerText = [
-  {
-    title: `About`,
-    link: "#",
-    target: "_self",
-  },
   {
     title: `Created by Vegard Maaø`,
     link: "#",
