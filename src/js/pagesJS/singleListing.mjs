@@ -18,7 +18,9 @@ const cancelEdit = document.querySelector(".cross-icon-edit");
 const editListFieldsetElem = document.querySelector(
   ".edit-listing-fieldset"
 ).elements;
-const submitBtn = document.querySelector(".submit-edit");
+const submitEditBtn = document.querySelector(".submit-edit");
+const bidFieldsetElem = document.querySelector(".make-a-bid-fieldset").elements;
+const submitBidBtn = document.querySelector(".submit");
 const errorDiv = document.querySelector(".error-msg");
 const baseUrl = "https://v2.api.noroff.dev";
 let endpoint = `/auction/listings/${id}?_seller=true&_bids=true`;
@@ -34,11 +36,19 @@ placeBidForm.addEventListener("submit", (e) => {
   const formdataOBj = {};
   formData.forEach((value, key) => (formdataOBj[key] = parseInt(value)));
   postActions.placeBid(completeUrl, formdataOBj, errorDiv);
+  setTimeout(() => {
+    location.reload();
+  }, 1500);
 });
+
+for (let i = 0; i < bidFieldsetElem.length; i++) {
+  const input = bidFieldsetElem[i];
+  input.onkeyup = () => formCheck(bidFieldsetElem, submitBidBtn);
+}
 
 for (let i = 0; i < editListFieldsetElem.length; i++) {
   const input = editListFieldsetElem[i];
-  input.onkeyup = () => formCheck(editListFieldsetElem, submitBtn);
+  input.onkeyup = () => formCheck(editListFieldsetElem, submitEditBtn);
 }
 
 editListingForm.addEventListener("submit", (e) => {
@@ -48,7 +58,7 @@ editListingForm.addEventListener("submit", (e) => {
   submitForm(editListingForm, completeUrl, putData, editListingForm, "");
   setTimeout(() => {
     location.reload();
-  }, 2500);
+  }, 1500);
 });
 
 cancelEdit.addEventListener("click", () => {

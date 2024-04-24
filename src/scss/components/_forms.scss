@@ -1,5 +1,14 @@
 @use "../utilities/variables" as variables;
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .login-section {
   display: flex;
   height: 100vh;
@@ -69,6 +78,33 @@ input {
         flex-direction: column;
         width: 350px;
       }
+    }
+  }
+}
+
+.make-a-bid {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-evenly;
+  height: 150px;
+  align-items: center;
+
+  fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-evenly;
+
+    align-items: center;
+
+    label {
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    input {
+      text-align: center;
     }
   }
 }

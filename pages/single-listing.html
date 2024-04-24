@@ -49,8 +49,8 @@
               <span class="cross-icon-edit"><i class="fas fa-times"></i></span>
               <fieldset class="edit-listing-fieldset">
                 <label for="title">Title:</label>
-                <input type="text" name="title" id="title" required />
-                <p class="invalid-feedback">Title is required</p>
+                <input type="text" name="title" id="title" />
+                <p class="invalid-feedback"></p>
                 <label for="description">Description</label>
                 <input type="text" name="description" id="description" />
                 <p class="invalid-feedback"></p>
@@ -82,9 +82,12 @@
 
         <div class="single-listing"></div>
         <form class="make-a-bid">
-          <label for="amount">Bid now!</label>
-          <input type="number" name="amount" id="bidamount" />
-          <button class="submit">Place bid</button>
+          <fieldset class="make-a-bid-fieldset">
+            <label for="amount">Bid now!</label>
+            <input type="number" name="amount" id="bidamount" required />
+            <p class="invalid-feedback"></p>
+          </fieldset>
+          <button class="submit" disabled>Place bid</button>
         </form>
         <div class="error-msg"></div>
       </section>

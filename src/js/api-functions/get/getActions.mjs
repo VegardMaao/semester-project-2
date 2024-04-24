@@ -301,9 +301,9 @@ export function searchArray(domElement, listingsArray, searchQuery) {
  * This function prints HTML to the single post DOM element
  */
 export function singlePostContent(domElement, listingData) {
+  const makeBidDom = document.querySelector(".make-a-bid");
   if (!listingData) {
     domElement.innerHTML = `<h1>Page does not exist<h1>`;
-    const makeBidDom = document.querySelector(".make-a-bid");
     makeBidDom.style.cssText = "display:none;";
   }
 
@@ -366,6 +366,13 @@ export function singlePostContent(domElement, listingData) {
         <p>Posted the ${formattedDate} by <a href="/pages/profile.html?profile=${seller.name}">${seller.name}</a></p>
     </div>
     `;
+
+    if (bids[bids.length - 1].bidder.name === myUserName) {
+      domElement.insertAdjacentHTML(
+        "afterend",
+        `<div><p class="important-note">You have the highest bid!</p></div>`
+      );
+    }
   }
 
   if (seller.name === myUserName) {
@@ -373,6 +380,8 @@ export function singlePostContent(domElement, listingData) {
         <div class="listing">
             <button class="delete" id="${id}">delete listing</button><button class="edit">edit listing</button>
         </div>`;
+
+    makeBidDom.style.cssText = "display:none;";
   }
 }
 

@@ -5,8 +5,6 @@
 export const listingObserver = new MutationObserver(function (mutations) {
   mutations.forEach(function () {
     const bidInput = document.querySelector("#bidamount");
-    const placeBidBtn = document.querySelector(".submit");
-    const userName = localStorage.getItem("userName");
     const bidAmountString = document.querySelector(".bid-amount").innerHTML;
     if (bidAmountString === "Be the first to place a bid!") {
       bidInput.min = 1;

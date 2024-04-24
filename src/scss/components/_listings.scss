@@ -103,22 +103,6 @@ section {
   }
 }
 
-.make-a-bid {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: space-evenly;
-  height: 150px;
-  align-items: center;
-
-  label {
-    font-weight: 700;
-  }
-  input {
-    text-align: center;
-  }
-}
-
 @media (width <= 1000px) {
   .all-listings,
   .user-listings,

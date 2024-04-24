@@ -26,8 +26,8 @@ export const navItems = [
 export const footerText = [
   {
     title: `Created by Vegard Maaø`,
-    link: "#",
-    target: "_self",
+    link: "https://www.linkedin.com/in/vegard-m-a1bba7174/",
+    target: "_blank",
   },
   {
     title: "Icons from Flaticon",

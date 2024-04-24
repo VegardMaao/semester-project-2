@@ -83,6 +83,7 @@ export function placeBid(url, amount, divForError) {
   const headerData = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
+    "X-Noroff-API-Key": apiKey.data.key,
   };
   postData(url, amount, headerData, divForError);
 }
