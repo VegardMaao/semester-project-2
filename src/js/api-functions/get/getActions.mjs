@@ -406,8 +406,8 @@ export function makeUserProfileSummary(domElement, profileInfo) {
             <div><img class="user-avatar"src="${avatar.url}" alt="${avatar.alt}"></div>
             <div class="user-text">
               <h1>${name}</h1>
-              <p>${bio || ""}</p>
               <a href="email:${email}"<p>${email}</p></a>
+              <p class="bio">${bio || ""}</p>
             </div>
           </div>
     `;
