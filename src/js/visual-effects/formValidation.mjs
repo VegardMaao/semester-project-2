@@ -18,7 +18,6 @@ export function formCheck(inputs, btn) {
   for (let i = 0; i < inputs.length; i++) {
     const inputsValidity = inputs[i].validity.valid;
     let errorMsg = inputs[i].nextElementSibling;
-
     if (inputsValidity) {
       errorMsg.style.cssText = "display: none";
       inputs[i].classList.add("validated");
@@ -60,6 +59,6 @@ export function characterCount(
   if (inpLength < minVal || inpLength >= maxLength) {
     counter.style.cssText = "color: red;";
   } else {
-    counter.style.cssText = "color: #fff;";
+    counter.style.cssText = "color: #1d3557;";
   }
 }

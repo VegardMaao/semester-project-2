@@ -16,11 +16,11 @@
     <script src="../src/js/index.js" type="module" defer></script>
     <script
       type="module"
-      src="../src/js/pagesJS/allListings.mjs"
+      src="../src/js/pagesJS/singleListing.mjs"
       defer
     ></script>
     <link rel="stylesheet" href="../dist/css/index.css" />
-    <title>All listings | Noroff Auction House</title>
+    <title>Single Listing | Noroff Auction House</title>
   </head>
   <body>
     <header class="sticky">
@@ -40,48 +40,56 @@
         <ul class="nav_ul"></ul>
       </nav>
     </header>
+
     <main>
-      <section class="featured-section"></section>
+      <section>
+        <div class="edit-listing-container">
+          <div>
+            <form action="#" class="edit-listing-form">
+              <span class="cross-icon-edit"><i class="fas fa-times"></i></span>
+              <fieldset class="edit-listing-fieldset">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title" />
+                <p class="invalid-feedback"></p>
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description" />
+                <p class="invalid-feedback"></p>
+                <label for="media.url">Link to your image</label>
+                <input type="text" name="media.url" id="img-url" />
+                <p class="invalid-feedback"></p>
+                <label for="media.alt">Image alt tekst</label>
+                <input type="text" name="media.alt" id="alt" />
+                <p class="invalid-feedback"></p>
+                <label for="tags">Tags</label>
+                <input type="text" name="tags" id="tags" />
+                <p class="invalid-feedback"></p>
+                <label for="endsAt">Bidding will end at</label>
+                <input
+                  type="datetime-local"
+                  value=""
+                  min=""
+                  max="2036-12-30T00:00"
+                  name="endsAt"
+                  id="ends-at"
+                />
+                <p class="invalid-feedback"></p>
+              </fieldset>
 
-      <section class="all-listings-section">
-        <h2>Browse all listings below</h2>
-
-        <div class="options">
-          <form action="#" class="search-field">
-            <input
-              type="search"
-              placeholder="Search"
-              id="site-search"
-              name="searchText"
-              aria-label="Search"
-            />
-            <select name="searchKeys" id="searchKeys">
-              <option value="">All</option>
-              <option value="title">Title</option>
-              <option value="description">Description</option>
-              <option value="tags">Tags</option>
-            </select>
-          </form>
-
-          <form action="#" class="">
-            <label for="sort-by">Sort By</label>
-            <select name="sort-by" id="sort-by">
-              <option value="default">Default</option>
-              <option value="newest-bids">Newest</option>
-              <option value="oldest-bids">Oldest</option>
-              <option value="highest-price">Highest price</option>
-              <option value="most-bids">Most Bids</option>
-              <option value="least-bids">Least Bids</option>
-            </select>
-          </form>
-
-          <form action="#">
-            <label for="show-inactive">Show inactive posts?</label>
-            <input type="checkbox" name="show-inactive" id="show-inactive" />
-          </form>
+              <button class="submit-edit" disabled>Submit changes</button>
+            </form>
+          </div>
         </div>
 
-        <div class="all-listings"></div>
+        <div class="single-listing"></div>
+        <form class="make-a-bid">
+          <fieldset class="make-a-bid-fieldset">
+            <label for="amount">Bid now!</label>
+            <input type="number" name="amount" id="bidamount" required />
+            <p class="invalid-feedback"></p>
+          </fieldset>
+          <button class="submit" disabled>Place bid</button>
+        </form>
+        <div class="error-msg"></div>
       </section>
 
       <section class="new-listing-section">
@@ -124,7 +132,6 @@
         </div>
       </section>
     </main>
-
     <footer>
       <ul class="footer-text-ul"></ul>
       <ul class="footer-icons-ul"></ul>

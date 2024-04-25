@@ -1,7 +1,9 @@
+const myUserName = localStorage.getItem("userName");
+
 export const navItems = [
   {
     title: "Profile",
-    link: "#",
+    link: `/pages/profile.html?profile=${myUserName}`,
     target: "_self",
   },
   {
@@ -11,11 +13,11 @@ export const navItems = [
   },
   {
     title: "My listings and bids",
-    link: "#",
+    link: `/pages/profile.html?profile=${myUserName}#bids-and-listings`,
     target: "_self",
   },
   {
-    title: "About",
+    title: "Log Out",
     link: "#",
     target: "_self",
   },
@@ -23,14 +25,24 @@ export const navItems = [
 
 export const footerText = [
   {
-    title: `About`,
-    link: "#",
-    target: "_self",
+    title: `Created by Vegard Maaø`,
+    link: "https://www.linkedin.com/in/vegard-m-a1bba7174/",
+    target: "_blank",
   },
   {
-    title: `Created by Vegard Maaø`,
-    link: "#",
-    target: "_self",
+    title: "Icons from Flaticon",
+    link: "https://www.flaticon.com",
+    target: "_blank",
+  },
+  {
+    title: "Icons from Fontawesome",
+    link: "https://fontawesome.com/",
+    target: "_blank",
+  },
+  {
+    title: "Fonts from Google Fonts",
+    link: "https://fonts.google.com/",
+    target: "_blank",
   },
 ];
 

@@ -11,7 +11,46 @@
  */
 export function submitForm(form, url, action, divForError, currentPage) {
   const formData = new FormData(form);
+
+  console.log(formData);
+
   const formdataOBj = {};
-  formData.forEach((value, key) => (formdataOBj[key] = value));
+  if (url.includes("/auction/listings")) {
+    const mediaURLs = formData.getAll("media.url");
+    const mediaAlts = formData.getAll("media.alt");
+    const media = mediaURLs.map((url, i) => ({ url, alt: mediaAlts.at(i) }));
+    const tags = formData.getAll("tags");
+    formData.forEach((value, key) => (formdataOBj[key] = value));
+    delete formdataOBj["media.url"];
+    delete formdataOBj["media.alt"];
+    delete formdataOBj["tags"];
+    if (media[0].url.length) {
+      formdataOBj.media = [media[0]];
+    } else {
+      delete formdataOBj.media;
+    }
+    const strTags = new String(tags);
+    formdataOBj.tags = strTags.split(",");
+  } else if (url.includes("/auction/profiles/")) {
+    const avatarUrls = formData.getAll("avatar.url");
+    const avatarAlts = formData.getAll("avatar.alt");
+    const avatar = avatarUrls.map((url, i) => ({ url, alt: avatarAlts.at(i) }));
+
+    const bannerUrls = formData.getAll("banner.url");
+    const bannerAlts = formData.getAll("banner.alt");
+    const banner = bannerUrls.map((url, i) => ({ url, alt: bannerAlts.at(i) }));
+
+    delete formdataOBj["avatar.url"];
+    delete formdataOBj["avatar.alt"];
+    delete formdataOBj["banner.url"];
+    delete formdataOBj["banner.alt"];
+
+    formdataOBj.avatar = avatar[0];
+    formdataOBj.banner = banner[0];
+
+    console.log(formdataOBj);
+  } else {
+    formData.forEach((value, key) => (formdataOBj[key] = value));
+  }
   action(url, formdataOBj, divForError, currentPage);
 }

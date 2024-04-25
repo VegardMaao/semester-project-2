@@ -1,6 +1,23 @@
-.hero-image {
-  background-image: url(https://images.unsplash.com/photo-1602789216385-c6f910f9b450?q=80&w=2050&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+@use "../utilities/variables" as variables;
+
+.featured-section {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+.user-banner {
+  border: 2px solid map-get($map: variables.$colors, $key: deepblue);
+  width: 100vw;
+  height: 20vh;
+  background: no-repeat center;
+  object-fit: cover;
+  background-color: map-get($map: variables.$colors, $key: brightblue);
+  z-index: -1;
+}
+
+.user-avatar {
+  border: 2px solid map-get($map: variables.$colors, $key: deepblue);
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }

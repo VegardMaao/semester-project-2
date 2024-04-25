@@ -20,7 +20,7 @@ label {
   color: map-get($map: variables.$colors, $key: deepblue);
 }
 
-.hero-story {
+.featured-section {
   display: flex;
   width: 100%;
   min-height: 600px;
@@ -52,6 +52,7 @@ label {
       font-size: 1.5rem;
       font-weight: 600;
       padding: 10px;
+      text-decoration: none;
     }
   }
 }
@@ -64,4 +65,9 @@ label {
     text-align: center;
     max-width: 600px;
   }
+}
+
+.important-note {
+  text-decoration: underline;
+  font-weight: 600;
 }

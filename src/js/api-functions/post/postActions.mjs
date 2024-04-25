@@ -5,6 +5,17 @@ function goToPage(page) {
   window.location.href = [`${page}`];
 }
 
+const apiKey = {
+  data: {
+    name: "My API Key",
+    status: "ACTIVE",
+    key: "c57f1e08-71bf-4bea-8292-d1bc6abb1f29",
+  },
+  meta: {},
+};
+
+const token = localStorage.getItem("accessToken");
+
 /**
  *
  * @param {string} url - where to send the data
@@ -16,6 +27,7 @@ function goToPage(page) {
 export function login(url, formData, divForError) {
   const headers = {
     "Content-Type": "application/json",
+    "X-Noroff-API-Key": apiKey.data.key,
   };
   const page = "/index.html";
   postData(url, formData, headers, divForError, goToPage, page);
@@ -53,7 +65,6 @@ export function signup(url, formData, divForError, mainDOMElement) {
  * This function passes information about the post you want to create down to the postData function
  */
 export function makePost(url, formData, divForError) {
-  const token = localStorage.getItem("accessToken");
   const headerData = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
@@ -61,11 +72,27 @@ export function makePost(url, formData, divForError) {
   postData(url, formData, headerData, divForError);
 }
 
-export function postComment(url, formData, divForError) {
+/**
+ *
+ * @param {string} url - The url to make a bid
+ * @param {object} amount - the amount to bid, value of the amount key must be a number
+ * @param {object} divForError - a DOM element where I print any error messages
+ */
+export function placeBid(url, amount, divForError) {
   const token = localStorage.getItem("accessToken");
   const headerData = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
+    "X-Noroff-API-Key": apiKey.data.key,
   };
-  postData(url, formData, headerData, divForError);
+  postData(url, amount, headerData, divForError);
+}
+
+export function createNewListing(url, formData) {
+  const headerData = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+    "X-Noroff-API-Key": apiKey.data.key,
+  };
+  postData(url, formData, headerData);
 }

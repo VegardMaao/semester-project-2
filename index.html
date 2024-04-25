@@ -14,6 +14,7 @@
       rel="stylesheet"
     />
     <script src="./src/js/index.js" type="module" defer></script>
+    <script src="./src/js/pagesJS/homepage.mjs" type="module" defer></script>
     <link rel="stylesheet" href="./dist/css/index.css" />
     <title>Welcome | Noroff Auction House</title>
   </head>
@@ -25,20 +26,7 @@
       </nav>
     </header>
     <main>
-      <section class="hero-story">
-        <div class="hero-image">
-          <div class="hero_story">
-            <h1>Welcome to the Auction House!</h1>
-            <p class="story_txt">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
-              velit vero expedita tempora fuga ipsam accusantium nobis ratione,
-              repudiandae molestias, a quam libero sequi? Adipisci, dolor!
-              Laboriosam est laborum velit?
-            </p>
-            <a href="#" class="cta-btn">Featured listing</a>
-          </div>
-        </div>
-      </section>
+      <section class="featured-section"></section>
       <section class="intro-to-Noroff-Auction-House">
         <h2>Intro to Auction House</h2>
         <p>
@@ -46,7 +34,47 @@
           eaque id eum quidem, rem quis enim illo voluptatum quasi veniam saepe?
           Deserunt maiores tenetur iure fugiat aut? Odit, enim?
         </p>
-        <a href="#" class="cta-btn">See all listings</a>
+        <a href="./pages/all-listings.html" class="cta-btn">See all listings</a>
+      </section>
+
+      <section class="new-listing-section">
+        <div class="new-listing-container">
+          <div class="plus-icon"><i class="fas fa-plus"></i></div>
+          <div>
+            <form action="#" class="add-new-listing-form">
+              <span class="cross-icon"><i class="fas fa-times"></i></span>
+              <fieldset class="add-new-listing-fieldset">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title" required />
+                <p class="invalid-feedback">Title is required</p>
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description" />
+                <p class="invalid-feedback"></p>
+                <label for="media.url">Link to your image</label>
+                <input type="text" name="media.url" id="img-url" />
+                <p class="invalid-feedback"></p>
+                <label for="media.alt">Image alt tekst</label>
+                <input type="text" name="media.alt" id="alt" />
+                <p class="invalid-feedback"></p>
+                <label for="tags">Tags</label>
+                <input type="text" name="tags" id="tags" />
+                <p class="invalid-feedback"></p>
+                <label for="endsAt">Bidding will end at</label>
+                <input
+                  type="datetime-local"
+                  value=""
+                  min=""
+                  max="2036-12-30T00:00"
+                  name="endsAt"
+                  id="ends-at"
+                />
+                <p class="invalid-feedback"></p>
+              </fieldset>
+
+              <button class="submit-listing" disabled>Submit listing</button>
+            </form>
+          </div>
+        </div>
       </section>
     </main>
     <footer>

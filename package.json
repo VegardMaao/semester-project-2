@@ -1,11 +1,10 @@
 {
   "name": "semester-project-2",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "Semester Project 2 repo",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "sass src/scss:dist/css",
     "watch": "sass src/scss:dist/css --watch",
     "start": "live-server",
@@ -30,6 +29,7 @@
   },
   "homepage": "https://github.com/VegardMaao/semester-project-2#readme",
   "devDependencies": {
+    "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",

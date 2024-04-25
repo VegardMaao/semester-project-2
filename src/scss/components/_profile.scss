@@ -1,0 +1,42 @@
+@use "../utilities/variables" as variables;
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+
+  .user-summary {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    width: 60vw;
+    position: relative;
+    top: -10vh;
+    margin: auto;
+    z-index: -1;
+
+    .user-text {
+      max-width: 30vw;
+      position: relative;
+      top: 10vh;
+      p {
+        margin: 25px 0px 0px 0px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+@media (width <= 1000px) {
+  .user-info {
+    .user-summary {
+      flex-direction: column;
+      top: -50px;
+      align-items: center;
+      .user-text {
+        position: static;
+        max-width: 80vw;
+      }
+    }
+  }
+}

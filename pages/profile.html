@@ -14,13 +14,9 @@
       rel="stylesheet"
     />
     <script src="../src/js/index.js" type="module" defer></script>
-    <script
-      type="module"
-      src="../src/js/pagesJS/allListings.mjs"
-      defer
-    ></script>
+    <script type="module" src="../src/js/pagesJS/profile.mjs" defer></script>
     <link rel="stylesheet" href="../dist/css/index.css" />
-    <title>All listings | Noroff Auction House</title>
+    <title>Profile | Noroff Auction House</title>
   </head>
   <body>
     <header class="sticky">
@@ -40,50 +36,66 @@
         <ul class="nav_ul"></ul>
       </nav>
     </header>
+
     <main>
-      <section class="featured-section"></section>
-
-      <section class="all-listings-section">
-        <h2>Browse all listings below</h2>
-
-        <div class="options">
-          <form action="#" class="search-field">
+      <section class="user-info"></section>
+      <section class="update-profile">
+        <form action="#" class="update-profile-form">
+          <span class="cross-icon-profile-editor"
+            ><i class="fas fa-times"></i
+          ></span>
+          <fieldset class="update-profile-fieldset">
+            <label for="bio"
+              >Update bio: <span class="counter">0</span> /
+              <span class="max-val">250</span></label
+            >
+            <textarea
+              name="bio"
+              id="bio-text-area"
+              bio
+              cols="30"
+              rows="10"
+              placeholder="Minimum 10 characters"
+              required
+            ></textarea>
+            <p class="invalid-feedback"></p>
+            <label for="avatar.url">Update your profile picuture</label>
             <input
-              type="search"
-              placeholder="Search"
-              id="site-search"
-              name="searchText"
-              aria-label="Search"
+              type="text"
+              name="avatar.url"
+              id="avatar-url"
+              placeholder="Link to your image"
             />
-            <select name="searchKeys" id="searchKeys">
-              <option value="">All</option>
-              <option value="title">Title</option>
-              <option value="description">Description</option>
-              <option value="tags">Tags</option>
-            </select>
-          </form>
-
-          <form action="#" class="">
-            <label for="sort-by">Sort By</label>
-            <select name="sort-by" id="sort-by">
-              <option value="default">Default</option>
-              <option value="newest-bids">Newest</option>
-              <option value="oldest-bids">Oldest</option>
-              <option value="highest-price">Highest price</option>
-              <option value="most-bids">Most Bids</option>
-              <option value="least-bids">Least Bids</option>
-            </select>
-          </form>
-
-          <form action="#">
-            <label for="show-inactive">Show inactive posts?</label>
-            <input type="checkbox" name="show-inactive" id="show-inactive" />
-          </form>
-        </div>
-
-        <div class="all-listings"></div>
+            <p class="invalid-feedback"></p>
+            <label for="avatar.alt">Avatar alt text</label>
+            <input type="text" name="avatar.alt" id="avatar-alt" />
+            <p class="invalid-feedback"></p>
+            <label for="banner.url">Update your profile banner</label>
+            <input
+              type="text"
+              name="banner.url"
+              id="banner-url"
+              placeholder="Link to your image"
+            />
+            <p class="invalid-feedback"></p>
+            <label for="banner.alt">Banner alt text</label>
+            <input type="text" name="banner.alt" id="banner-alt" />
+            <p class="invalid-feedback"></p>
+          </fieldset>
+          <button class="update-profile-btn" disabled>Save changes</button>
+        </form>
       </section>
 
+      <section class="user-wins-and-listings" id="bids-and-listings">
+        <div>
+          <h2>Users listings</h2>
+          <div class="user-listings"></div>
+        </div>
+        <div>
+          <h2>Users won bids</h2>
+          <div class="user-wins"></div>
+        </div>
+      </section>
       <section class="new-listing-section">
         <div class="new-listing-container">
           <div class="plus-icon"><i class="fas fa-plus"></i></div>
