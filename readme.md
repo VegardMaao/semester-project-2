@@ -1,10 +1,10 @@
 # Hello World
 
-This is my Noroff Front-End Semester Project 2
+This is my Noroff Front-End Semester Project 2.
 
 ## Installing project
 
-Run npm i to install all dependencies, they are as follow:
+Run npm i to install all dependencies, they are as follows:
 
 - Eslint
 - Husky
