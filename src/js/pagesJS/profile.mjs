@@ -1,4 +1,4 @@
-import * as getActions from "../api-functions/get/getActions.mjs";
+import * as getActions from "../api-functions/get/getActions/makeUser.mjs";
 import * as getData from "../api-functions/get/getData.mjs";
 import * as formValidation from "../visual-effects/formValidation.mjs";
 import { submitForm } from "../formActions/submitForms.mjs";

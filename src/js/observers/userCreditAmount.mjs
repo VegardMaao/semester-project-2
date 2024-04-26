@@ -1,4 +1,4 @@
-import { getUserCredits } from "../api-functions/get/getActions.mjs";
+import { getUserCredits } from "../api-functions/get/getActions/userCredits.mjs";
 import { getData } from "../api-functions/get/getData.mjs";
 
 const myUserName = localStorage.getItem("userName");

@@ -1,4 +1,4 @@
-import * as getActions from "../api-functions/get/getActions.mjs";
+import * as getActions from "../api-functions/get/getActions/makeSinglePost.mjs";
 import * as getData from "../api-functions/get/getData.mjs";
 import * as postActions from "../api-functions/post/postActions.mjs";
 import { putData } from "../api-functions/put/putData.mjs";
