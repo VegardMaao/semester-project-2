@@ -1,3 +1,5 @@
+const myUserName = localStorage.getItem("userName");
+
 /**
  * @param {object} domElement - where to print HTML
  * @param {array} listingData - what HTML to print
@@ -47,7 +49,19 @@ export function singlePostContent(domElement, listingData) {
     media.push(" ");
   }
 
-  if (bids >= 0) {
+  if (!myUserName) {
+    domElement.innerHTML = `
+    <div class="listing">
+      <img src="${media[0].url || ""}" alt="${media[0].alt || ""}">
+          <h1>${title}</h1>
+          <p class="description">${description || ""}</p>
+          <p class="description bid-amount"><a href="../pages/login.html"> Sign up or log in to place a bid! </a>!</p>
+          <p class="description">Bidding ends the ${endDate} at ${endTime}</p>
+  
+          <p>Posted the ${formattedDate} by <a href="/pages/profile.html?profile=${seller.name}">${seller.name}</a></p>
+      </div>
+    `;
+  } else if (bids >= 0) {
     domElement.innerHTML = `
       <div class="listing">
       <img src="${media[0].url || ""}" alt="${media[0].alt || ""}">
