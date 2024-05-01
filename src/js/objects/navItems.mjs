@@ -1,27 +1,67 @@
 const myUserName = localStorage.getItem("userName");
 
-export const navItems = [
-  {
-    title: "Profile",
-    link: `/pages/profile.html?profile=${myUserName}`,
-    target: "_self",
-  },
-  {
-    title: "All listings",
-    link: "/pages/all-listings.html",
-    target: "_self",
-  },
-  {
-    title: "My listings and bids",
-    link: `/pages/profile.html?profile=${myUserName}#bids-and-listings`,
-    target: "_self",
-  },
-  {
-    title: "Log Out",
-    link: "#",
-    target: "_self",
-  },
-];
+export const navItems = [];
+
+if (myUserName) {
+  navItems.push(
+    {
+      title: "Profile",
+      link: `/pages/profile.html?profile=${myUserName}`,
+      target: "_self",
+    },
+    {
+      title: "All listings",
+      link: "/pages/all-listings.html",
+      target: "_self",
+    },
+    {
+      title: "My listings and bids",
+      link: `/pages/profile.html?profile=${myUserName}#bids-and-listings`,
+      target: "_self",
+    },
+    {
+      title: "Log Out",
+      link: "#",
+      target: "_self",
+    }
+  );
+} else {
+  navItems.push(
+    {
+      title: "Log in",
+      link: `/pages/login.html`,
+      target: "_self",
+    },
+    {
+      title: "All listings",
+      link: "/pages/all-listings.html",
+      target: "_self",
+    }
+  );
+}
+
+// export const navItems = [
+//   {
+//     title: "Profile",
+//     link: `/pages/profile.html?profile=${myUserName}`,
+//     target: "_self",
+//   },
+//   {
+//     title: "All listings",
+//     link: "/pages/all-listings.html",
+//     target: "_self",
+//   },
+//   {
+//     title: "My listings and bids",
+//     link: `/pages/profile.html?profile=${myUserName}#bids-and-listings`,
+//     target: "_self",
+//   },
+//   {
+//     title: "Log Out",
+//     link: "#",
+//     target: "_self",
+//   },
+// ];
 
 export const footerText = [
   {

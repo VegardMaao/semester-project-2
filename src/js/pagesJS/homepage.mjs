@@ -1,4 +1,4 @@
-import * as getActions from "../api-functions/get/getActions.mjs";
+import * as getActions from "../api-functions/get/getActions/feed.mjs";
 import * as getData from "../api-functions/get/getData.mjs";
 
 const featuredSection = document.querySelector(".featured-section");

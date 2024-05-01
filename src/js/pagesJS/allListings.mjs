@@ -1,4 +1,4 @@
-import * as getActions from "../api-functions/get/getActions.mjs";
+import * as feed from "../api-functions/get/getActions/feed.mjs";
 import * as getData from "../api-functions/get/getData.mjs";
 
 const featuredSection = document.querySelector(".featured-section");
@@ -16,9 +16,9 @@ let completeUrl;
 endpoint = "/auction/listings?_active=true&_seller=true&_bids=true";
 completeUrl = baseUrl + endpoint;
 
-getData.getData(completeUrl, featuredSection, getActions.featuredListing);
+getData.getData(completeUrl, featuredSection, feed.featuredListing);
 
-getData.getData(completeUrl, allListingsDOM, getActions.printFeed);
+getData.getData(completeUrl, allListingsDOM, feed.printFeed);
 
 searchOptions.onsubmit = (e) => {
   e.preventDefault();
@@ -35,7 +35,7 @@ showInactivePosts.addEventListener("change", (e) => {
     endpoint = "/auction/listings?_active=true&_seller=true&_bids=true";
     completeUrl = baseUrl + endpoint;
   }
-  getData.getData(completeUrl, allListingsDOM, getActions.printFeed);
+  getData.getData(completeUrl, allListingsDOM, feed.printFeed);
   sortingInp.value = "default";
 });
 
@@ -47,7 +47,7 @@ sortingInp.addEventListener("change", (e) => {
       getData.getData(
         completeUrl,
         allListingsDOM,
-        getActions.sortArray,
+        feed.sortArray,
         sortingInp.value
       );
       break;
@@ -56,7 +56,7 @@ sortingInp.addEventListener("change", (e) => {
       getData.getData(
         completeUrl,
         allListingsDOM,
-        getActions.sortArray,
+        feed.sortArray,
         sortingInp.value
       );
       break;
@@ -65,7 +65,7 @@ sortingInp.addEventListener("change", (e) => {
       getData.getData(
         completeUrl,
         allListingsDOM,
-        getActions.sortArray,
+        feed.sortArray,
         sortingInp.value
       );
       break;
@@ -73,7 +73,7 @@ sortingInp.addEventListener("change", (e) => {
       getData.getData(
         completeUrl,
         allListingsDOM,
-        getActions.sortArray,
+        feed.sortArray,
         sortingInp.value
       );
       break;
@@ -81,7 +81,7 @@ sortingInp.addEventListener("change", (e) => {
       getData.getData(
         completeUrl,
         allListingsDOM,
-        getActions.sortArray,
+        feed.sortArray,
         sortingInp.value
       );
       break;
@@ -89,7 +89,7 @@ sortingInp.addEventListener("change", (e) => {
       getData.getData(
         completeUrl,
         allListingsDOM,
-        getActions.sortArray,
+        feed.sortArray,
         sortingInp.value
       );
       break;
@@ -102,22 +102,12 @@ searchForm.addEventListener("change", (e) => {
   const willBeSearchParams = new FormData(searchForm);
   const searchParams = {};
   willBeSearchParams.forEach((value, key) => (searchParams[key] = value));
-  getData.getData(
-    completeUrl,
-    allListingsDOM,
-    getActions.searchArray,
-    searchParams
-  );
+  getData.getData(completeUrl, allListingsDOM, feed.searchArray, searchParams);
 });
 
 searchInp.onkeyup = () => {
   const willBeSearchParams = new FormData(searchForm);
   const searchParams = {};
   willBeSearchParams.forEach((value, key) => (searchParams[key] = value));
-  getData.getData(
-    completeUrl,
-    allListingsDOM,
-    getActions.searchArray,
-    searchParams
-  );
+  getData.getData(completeUrl, allListingsDOM, feed.searchArray, searchParams);
 };
