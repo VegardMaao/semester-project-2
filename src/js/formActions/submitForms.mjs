@@ -11,16 +11,15 @@
  */
 export function submitForm(form, url, action, divForError, currentPage) {
   const formData = new FormData(form);
-
-  console.log(formData);
-
   const formdataOBj = {};
   if (url.includes("/auction/listings")) {
     const mediaURLs = formData.getAll("media.url");
     const mediaAlts = formData.getAll("media.alt");
     const media = mediaURLs.map((url, i) => ({ url, alt: mediaAlts.at(i) }));
     const tags = formData.getAll("tags");
+
     formData.forEach((value, key) => (formdataOBj[key] = value));
+
     delete formdataOBj["media.url"];
     delete formdataOBj["media.alt"];
     delete formdataOBj["tags"];
@@ -47,8 +46,6 @@ export function submitForm(form, url, action, divForError, currentPage) {
 
     formdataOBj.avatar = avatar[0];
     formdataOBj.banner = banner[0];
-
-    console.log(formdataOBj);
   } else {
     formData.forEach((value, key) => (formdataOBj[key] = value));
   }
