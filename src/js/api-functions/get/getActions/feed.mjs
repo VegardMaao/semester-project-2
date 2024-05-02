@@ -299,6 +299,5 @@ export function searchArray(domElement, listingsArray, searchQuery) {
     });
   }
   domElement.innerHTML = "";
-  console.log(filteredArray);
   printFeed(domElement, filteredArray);
 }
