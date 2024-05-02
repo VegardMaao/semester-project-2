@@ -269,7 +269,11 @@ export function searchArray(domElement, listingsArray, searchQuery) {
   }
   if (!searchIn) {
     filteredArray = listingsArray.filter((listing) => {
-      const { title = "", description = "", tags = [] } = listing;
+      let { title, description, tags } = listing;
+      if (!description || !tags) {
+        tags.push("");
+        description = "";
+      }
       const lowerCaseTitle = title.toLowerCase();
       const lowerCaseBody = description.toLowerCase();
       const lowerCaseTags = tags.map((v) => v.toLowerCase()).toString();
@@ -281,7 +285,11 @@ export function searchArray(domElement, listingsArray, searchQuery) {
     });
   } else {
     filteredArray = listingsArray.filter((listing) => {
-      const { title, description, tags } = listing;
+      let { title, description, tags } = listing;
+      if (!description || !tags) {
+        tags.push("");
+        description = "";
+      }
       let searchObject = {
         title: title.toLowerCase(),
         description: description.toLowerCase(),
@@ -291,5 +299,6 @@ export function searchArray(domElement, listingsArray, searchQuery) {
     });
   }
   domElement.innerHTML = "";
+  console.log(filteredArray);
   printFeed(domElement, filteredArray);
 }
