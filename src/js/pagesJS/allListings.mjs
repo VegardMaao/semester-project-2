@@ -1,5 +1,6 @@
 import * as feed from "../api-functions/get/getActions/feed.mjs";
 import * as getData from "../api-functions/get/getData.mjs";
+import * as debounce from "../helpers/debounce/debounce.mjs";
 
 const featuredSection = document.querySelector(".featured-section");
 const allListingsDOM = document.querySelector(".all-listings");
@@ -102,12 +103,22 @@ searchForm.addEventListener("change", (e) => {
   const willBeSearchParams = new FormData(searchForm);
   const searchParams = {};
   willBeSearchParams.forEach((value, key) => (searchParams[key] = value));
-  getData.getData(completeUrl, allListingsDOM, feed.searchArray, searchParams);
+  getData.getData(
+    completeUrl,
+    allListingsDOM,
+    debounce.debounce(feed.searchArray, 1500),
+    searchParams
+  );
 });
 
 searchInp.onkeyup = () => {
   const willBeSearchParams = new FormData(searchForm);
   const searchParams = {};
   willBeSearchParams.forEach((value, key) => (searchParams[key] = value));
-  getData.getData(completeUrl, allListingsDOM, feed.searchArray, searchParams);
+  getData.getData(
+    completeUrl,
+    allListingsDOM,
+    debounce.debounce(feed.searchArray, 1500),
+    searchParams
+  );
 };
