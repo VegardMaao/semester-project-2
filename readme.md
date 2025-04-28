@@ -21,11 +21,7 @@ I have used the following dependencies for this project:
 
 ## Getting started
 
-Clone the repo:
-git clone git@github.com:NoroffFEU/portfolio-1-example.git
-
-Install the dependencies:
-npm install
+Clone the repo and install the dependencies: npm install
 
 ## Running project
 
