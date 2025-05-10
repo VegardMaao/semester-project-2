@@ -13,15 +13,25 @@ The project is an online auction house. Actions users can make include:
 
 ## Built with:
 I have used the following dependencies for this project: 
-- Eslint
-- Husky
-- Prettier
-- Live server
-- Sass
+- [Eslint](https://eslint.org/)
+- [Husky](https://typicode.github.io/husky/)
+- [Prettier](https://prettier.io/)
+- [Live server](https://ritwickdey.github.io/vscode-live-server/)
+- [Sass](https://sass-lang.com/)
 
 ## Getting started
 
-Clone the repo and install the dependencies: npm install
+1. Clone the repo:
+
+```bash
+git clone git@github.com:NoroffFEU/portfolio-1-example.git
+```
+
+2. Install the dependencies:
+
+```
+npm install
+```
 
 ## Running project
 
