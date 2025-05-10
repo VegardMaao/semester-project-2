@@ -35,7 +35,15 @@ npm install
 
 ## Running project
 
-To run the project as a dev use "npm run dev". To build the site on (for example) netlify, use the "CI= npm run build" command
+To run the project as a dev use:
+```
+npm run dev
+```
+
+To build the site on (for example) netlify, use:
+```
+npm run build
+```
 
 ## Contact: 
 
